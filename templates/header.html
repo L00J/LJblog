@@ -1,0 +1,86 @@
+<div class="container-fluid">
+    <!--导航开始-->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <!--navbar-inverse 黑色背景导航栏,navbar-fixed-top 导航栏固定到顶部 -->
+        <div class="container">
+            <!-- 放入logo-->
+           <!--  <a href="http://attacker.club" class="navbar-brand"><strong>Attacker.club</strong></a> -->
+
+
+            <!-- 登陆&注册栏
+    <div class="navbar-right  hidden-xs">
+        <ul class="nav navbar-nav">
+            <a class="login btn btn-normal btn-primary" href="http://www.attacker.club/?/account/login/">登录</a>
+            <a class="register btn btn-normal btn-success" href="http://www.attacker.club/?/account/register/">注册</a>
+    </ul>
+</div>-->
+
+            <div class="nav navbar-nav  navbar-right  hidden-xs">
+                <ul class="nav navbar-nav">
+                    <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> 登录</a></li>
+                    <li><a href="#"><span class="glyphicon glyphicon-user"></span> 注册</a></li>
+
+                </ul>
+            </div>
+
+
+            <!--折叠 响应式导航栏 -->
+            <div class="navbar-header navbar-left">
+                <button class="navbar-toggle" data-toggle="collapse" data-target="#responsive-navbar">
+                    <span class="icon-bar">  </span>
+                    <span class="icon-bar">  </span>
+                    <span class="icon-bar">  </span>
+                </button>
+            </div>
+
+
+            <div class="collapse navbar-collapse" id="responsive-navbar">
+
+                <!--菜单栏 -->
+                <ul class="nav navbar-nav">
+
+                    <li class="ative"><a href="/"> 主页 </a></li>
+
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">专题教程 <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+
+                            {% for tutorial in tutorial_list %}
+                                <li><a href="#">{{ tutorial.name }}</a></li>
+                            {% endfor %}
+
+                        </ul>
+                    </li>
+
+
+                    <li><a href="{% url 'blog:articles'   %}"> 前端设计 </a> </li>
+
+                    <li><a href="{% url "blog:articles" %}"> Web开发 </a> </li>
+
+                    <li><a href="{% url "blog:articles" %}"> 安全攻防 </a> </li>
+
+                    <li><a href="{% url "blog:articles" %}"> Ops </a> </li>
+
+                    <li><a href="{% url "blog:articles" %}"> 我的归档 </a></li>
+
+                </ul>
+
+
+                <!-- 添加搜索表单 -->
+                <form action="" class="navbar-form navbar-left">
+                    <input type="text" placeholder="搜索 ..." class="form-control">
+                    <button type="submit">
+                        <span class="glyphicon glyphicon-search"></span>
+                        <!-- form-control 可以额外添加样式
+                        glyphicon 小图标;button 按钮
+
+                        https://getbootstrap.com/docs/3.3/components/-->
+                    </button>
+                </form>
+
+            </div>
+        </div>
+    </nav>
+    <!--导航结束-->
+</div>

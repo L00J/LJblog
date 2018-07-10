@@ -1,0 +1,140 @@
+       /*给导航栏腾空间 */
+
+       body {
+           padding-top: 70px;
+       }
+
+
+
+       /*搜索表单自定义样式 */
+
+       .navbar-inverse input[type="text"] {
+           background: #ffecec;
+           border: none;
+           color: #999;
+       }
+
+       /*选择器 暗色背景 text类型的input样式;背景白色 边框none,搜索内容颜色*/
+
+       .navbar-inverse .navbar-form {
+           position: relative;
+       }
+
+       /*相对定位*/
+
+       .navbar-inverse button[type="submit"] {
+           position: absolute;
+           /*绝对的定位方式定位按钮*/
+           top: 30%;
+           right: 25px;
+           /*form标签 右移*/
+           background: none;
+           border: none;
+       }
+
+       .navbar-inverse .glyphicon {
+           color: #999;
+       }
+
+
+
+
+
+       /*左边窗口*/
+
+       .l_box {
+           width: 670px;
+       }
+
+       .f_l {
+           float: left;
+       }
+
+
+       /*右边窗口*/
+
+       .r_box {
+           width: 300px;
+       }
+
+       .f_r {
+           float: right;
+       }
+
+
+
+
+
+       .articlelist {
+           width: 100%;
+           overflow: hidden;
+           margin-top: 25px;
+       }
+
+       .article-right {
+           width: 71%;
+           float: right;
+           position: relative;
+       }
+
+       .article-right h4 {
+           padding: 0;
+           margin: 0;
+           background: none;
+           font-size: 18px;
+           padding-bottom: 11px;
+           text-indent: 0;
+           white-space: nowrap;
+           text-overflow: ellipsis;
+           overflow: hidden;
+       }
+
+       .article-right ul {
+           width: 100%;
+           overflow: hidden;
+           position: absolute;
+       }
+
+       .article-right ul li {
+           float: left;
+           overflow: hidden;
+           padding: 0 5px;
+           font-size: 12px;
+           color: #888;
+           max-width: 150px;
+           overflow: hidden;
+           white-space: nowrap;
+           text-overflow: ellipsis;
+       }
+
+       ul,
+       dl,
+       dt,
+       dd,
+       p {
+           padding: 0;
+           margin: 0;
+           list-style: none;
+       }
+
+
+       .tag-article {
+    text-align: center;
+    line-height: 24px;
+    margin: 20px;
+}
+
+       .label {
+    margin-right: 5px;
+       }
+
+           .article {
+    position: relative;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+}
+
+       .title-article {
+    padding: 20px 15px 0px 15px;
+}
+
