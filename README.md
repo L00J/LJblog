@@ -7,7 +7,7 @@ django2.0 + bootstrap + markdown
 
 
 
-#### 使用说明
+#### 初始化环境
 ```
 cd LJblog
 source  env/bin/activate 
@@ -22,4 +22,10 @@ python manage.py  createsuperuser
 
 python manage.py runserver
 #启动服务
+```
+
+### 导入数据
+```
+python manage.py loaddata blog_dump.json
+#导入文章内容（测试）
 ```
