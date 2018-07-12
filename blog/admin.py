@@ -2,12 +2,14 @@ from django.contrib import admin
 
 
 
-from.models import Article,Category,Tag
+from .models import Article,Category,Tag
 
 from tutorial.models import Tutorial,Part
 
 class Articleslist(admin.ModelAdmin):
-    list_display = ['title','publish','mod_date','category','author']
+    list_display = ['title','category','mod_date','author']
+    list_filter = ['publish','category']
+    search_fields = ['title']
     #重写ModelAdmin模块的save_model方法
     def save_model(self, request, obj, form, change):
         if not obj.id:
