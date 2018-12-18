@@ -14,8 +14,8 @@ python3 -m venv env_django (或: virtualenv -p `which  python3` env_django)
 source  env_django/bin/activate
 #载入py环境
 
-pip install -i http://mirrors.aliyun.com/pypi/simple -r requirements.txt
-#安装pip包
+pip  install -i http://mirrors.aliyun.com/pypi/simple  --trusted-host mirrors.aliyun.com  -r requirements.txt
+#安装pip包(阿里源)
 
 python manage.py makemigrations 
 #为改动models创建迁移记录
