@@ -15,21 +15,63 @@
 {% block content %}
     <section class="mysection main" style="animation: fuxiasuo 0.8s;">
         <ul class="timeline">
-            {% for article in article_list %}
-                <li class="event">
-                    <input type="radio" name="tl-group" {% if forloop.counter0 == 0 %} checked {% endif %}/>
-                    <label></label>
-                    <div class="thumb"><span>{{ article.date_time }}</span></div>
-                    <div class="content-perspective">
-                        <div class="content">
-                            <div class="content-inner">
-                                <h3><a href="{% url "blog:detail" pk=article.id%}">{{ article.title }}</a></h3>
-                                <p>{{ article.digest }}</p>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-            {% endfor %}
-        </ul>
+
+
+
+        {% for article in article_list %}
+            {% if  forloop.first %}
+           <li><h4> {{ article.publish.month }}月发表</h4></li>
+                <hr/>
+            {% endif %}
+
+
+            <li> {{ article.publish.month}}月{{ article.publish.day }}日  <a href="{% url "blog:detail" pk=article.id%}">   <strong> {{ article.title }} </strong>
+
+           </a>
+            </li>
+            <br/>
+
+        {% endfor %}
+
+
+
+
+
+
+
+
     </section>
 {% endblock %}
+
+
+
+{##}
+{##}
+{##}
+{#<div class="uk-container">#}
+{##}
+{#<ul>#}
+{#     {% for article in article_list %}#}
+{##}
+{#        <li>{{ article.publish.year}}年#}
+{##}
+{#        {% regroup article_list by article.publish.month as posts_by_month %}#}
+{#        <ul>#}
+{#            {% for month in posts_by_month %}#}
+{#                <li id="{{ year.grouper }}{{ month.grouper|stringformat:'02d' }}">{{ month.grouper }}月#}
+{#                    <ul>#}
+{#                        {% for post in month.list %}#}
+{#                            <li>{{ article.publish.day}}日 <a href="{{ post.get_absolute_url }}" class="uk-link-reset uk-button-text">{{ post.title }}</a> </li>#}
+{#                        {% endfor %}#}
+{#                    </ul>#}
+{#                </li>#}
+{#            {% endfor %}#}
+{#        </ul>#}
+{#        </li>#}
+{#    {% endfor %}#}
+{#</ul>#}
+{#</div>#}
+{##}
+{##}
+{##}
+{#{% endblock %}#}

@@ -2,62 +2,69 @@
 
 {% block content %}
 
-<!-- 主体 -->
-<div class=" span8 l_box f_l ">
 
- <section>
-                <div class="page-header">
-                    <h3>文章</h3>
-                </div>
-            </section>
+    <!-- 主体 -->
+    <div class=" span8 l_box f_l ">
+
+        <section>
+            <div class="page-header">
+                {#                    <h3>文章</h3>#}
+            </div>
+        </section>
+
+        {% if error_msg %}
+            <p>{{ error_msg }}</p>
+        {% endif %}
+
 
 
         <!--列表开始-->
         <ul>
             {% for article in article_list %}
-
-
-                <div class="article well clearfix ">
-<section class="visible-md visible-lg">
-<div class="title-article">
-                    <h4 class="blue-text"><a href="{% url "blog:detail" pk=article.id %}" title="{{ article.title }}">{{ article.title }}</a></h4>
-
-
- <div class="content-article">
-     <div class="alert alert-zan">     {{ article.digest }}</div>
-                        </div>
+                <li>
 
 
 
- <ul>
-<li  class="glyphicon glyphicon-time"> <a title="{{ article.author }}　{{ article.publish }} 发表 ">
-<i class="el-time"></i> {{ article.publish }}</a></li>
+                    <div class="article well clearfix ">
+                        <section class="visible-md visible-lg">
+                            <div class="title-article">
+                                <h4 class="blue-text"><a href="{% url "blog:detail" pk=article.id %}" title="{{ article.title }}">{{ article.title }}</a></h4>
+
+                                <div class="content-article">
+                                    <div class="alert alert-zan">     {{ article.digest  }} ...</div>
+                                </div>
 
 
-<li class="glyphicon glyphicon-user"><a href="#" title="作者： {{ article.author }}">
-<i class="el-user"></i>{{ article.author }}</a></li>
 
-<li class="glyphicon glyphicon-pencil"> <a href="#" title="已有 {{ article.comment }} 条评论">
-<i class="el-comment"> {{ article.comment }}</i></a></li>
-
-<li class="glyphicon glyphicon-eye-open"> <a title="已有 {{ article.view }} 次浏览">
-<i class="el-eye-open"></i>{{ article.view }}</a></li>
-
-<li class="glyphicon glyphicon-th-list"> <a href="#" pk=article.category %}" title="查看分类"><i class="el-th-list"></i>{{ article.category }}</a></li>
-                </ul>
-</div>
-
-</section>
-
-                </div>
+                                <ul>
 
 
+                                    <li class="glyphicon glyphicon-user"><i class="el-user"></i> {{ article.author.upper }}  &nbsp </li>
+
+                                    <li class="glyphicon glyphicon-time"><a href="http://127.0.0.1:8000/archive/{{ article.publish.year }}/{{ article.publish.month }}"  title="发表于: {{ article.publish }}">
+                                        <i class="el-time"></i>{{ article.publish.year }}年{{ article.publish.month }}月&nbsp</a></li>
+
+
+                                    <li class="glyphicon glyphicon-pencil"> <a href="#" title="已有 {{ article.comment }} 条评论">
+                                        <i class="el-comment"> {{ article.comment }}条评论&nbsp</i></a></li>
+
+                                    {#                                <li class="glyphicon glyphicon-eye-open"> <a title="已有 {{ article.view }} 次浏览">#}
+                                    {#                                    <i class="el-eye-open"></i>{{ article.view }}</a></li>#}
+
+                                    <li class="glyphicon glyphicon-th-list"> <a href="#" pk=article.category %}" title="分类"><i class="el-th-list"></i>{{ article.category }}</a></li>
+                                </ul>
+                            </div>
+
+                        </section>
+
+                    </div>
+
+                </li>
             {% endfor %}
         </ul>
         <!--列表结束-->
 
-</div>
-
+    </div>
 
 
 

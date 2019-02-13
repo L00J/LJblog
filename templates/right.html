@@ -1,23 +1,78 @@
-<!-- 侧边栏 -->
-<div class=" span4 r_box f_r">
-            <section>
-                <div class="page-header">
-                    <h3>侧边栏</h3>
-                </div>
-            </section>
-            <div class="sources">
-                <div id="sources">
-                    <div class="sources">
-                        <div class="sources row">
-                            <div class="span3">
-                                <h3><a href="#"> 呵呵呵</a> </h3>
 
-                            </div>
+
+
+<!-- 侧边栏 -->
+<div class="side ">
+
+
+
+    <section>
+        <div class="page-header">
+            {#                    <h3>侧边栏</h3>#}
+        </div>
+    </section>
+
+
+
+
+    <div class="sources">
+        <div id="sources">
+            <div class="sources">
+                <div class="sources row">
+
+
+
+
+
+                    <div class="span3">
+
+                        <h4> 运维圈大本营</h4>
+                        <h4>QQ群 <font size="3" color="#FF0000">5501770161</font>  </h4>
+
+                        <img src="/media/home_page/yw.jpg" style="width:80%">
+                        <br/>
+                        <br/>
+
+                        {#                                <h4> 极客技术联盟</h4>#}
+                        {#                                <h4>QQ群 <font color="#FF0000">294086516</font>  </h4>#}
+                        {#                                <img src="/media/home_page/hacker.jpeg" style="width:80%">#}
+
+                        <br/>
+
+
+
+                        <!--标签-->
+                        <div class="cloud bg-color animation-div">
+                            <h4 class="index-title"><i class="el-tags"></i>标签云
+                                <small>Tags Clouds</small>
+                            </h4>
+                            <ul id="3dcloud">
+                                {% for tag in tag_all %}
+
+
+                                    <li><a href="{% url "blog:tag" %}" title="标签：{{ tag }} ">{{ tag }}</a></li>
+
+
+                                {% endfor %}
+                            </ul>
                         </div>
+
+
+
+
                     </div>
+
+
+                    <!--友情链接-->
+                    {% include "links.html" %}
+
+
 
                 </div>
             </div>
 
         </div>
+    </div>
+
+</div>
 

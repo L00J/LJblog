@@ -31,8 +31,8 @@ python manage.py runserver
 ### 导入数据
 ```
 python manage.py loaddata  dump_blog.json
-python manage.py loaddata  dump_tutorial.json
 #导入文章内容（测试）
+# python manage.py dumpdata >  dump_blog.json #导出
 ```
 
 

@@ -4,14 +4,31 @@ from django.shortcuts import render
 from django.shortcuts import render, get_object_or_404
 
 from blog.models import Article,Category,Tag
-from tutorial.models import Tutorial,Part
 
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger #分页
 
 import markdown
 
+from django.views.generic import ListView, DetailView
 
 
+from django.db.models import Q
+
+from comments.forms import CommentForm
+
+def search(request):
+    key = request.GET.get('key')
+    error_msg = ''
+
+    if not key:
+        error_msg = "请输入关键词"
+        return render(request, 'index.html', {'error_msg': error_msg})
+
+    # article_list = Article.objects.filter(Q(title__icontains=key) | Q(body__icontains=key))
+    # 全文搜索
+    article_list = Article.objects.filter(title__icontains=key)
+    return render(request, 'index.html', {'error_msg': error_msg,
+                                               "article_list": article_list, "key": key})
 
 
 def index(request):
@@ -23,7 +40,8 @@ def index(request):
     """
     article_list = Article.objects.order_by('-publish')[:5] #最近5篇文章
 
-    tutorial_list = Tutorial.objects.all() # 教程列表
+
+
 
     front_list = Article.objects.filter(category__name__contains="前端设计").order_by('-publish')[:5]
     web_list = Article.objects.filter(category__name__contains="Web开发").order_by('-publish')[:5]
@@ -34,11 +52,9 @@ def index(request):
 
     ops_list = Article.objects.filter(category__name__contains="Ops").order_by('-publish')[:5]
     sec_list = Article.objects.filter(category__name__contains="安全").order_by('-publish')[:5]
+    tag_all =  [tag for tag in Tag.objects.all()]
 
 
-    #return render(request, 'index.html', {"article_list": article_list,
-    #              "tutorial_list" : tutorial_list,
-    #              "front_list" : front_list })
 
 
 
@@ -58,24 +74,59 @@ def detail(request, pk):
     article = get_object_or_404(Article, pk=pk)
     article.viewed()#阅读量统计
 
-    article.body = markdown.markdown(article.body,
-                                  extensions=[
-                                      'markdown.extensions.extra',
-                                      'markdown.extensions.codehilite',
-                                      'markdown.extensions.toc',
-                                  ])
+    # article.body = markdown.markdown(article.body.replace("\r\n", '  \n'),
+    # # article.body = markdown.markdown(article.body,
+    #                               extensions=[
+    #                                   'markdown.extensions.extra',
+    #                                   'markdown.extensions.codehilite',
+    #                                   'markdown.extensions.toc',
+    #                               ],safe_mode=True,enable_attributes=False)
+    # return render(request, 'detail.html', {"article": article,
+    #                                        "source_id": article.id,
+    #              } )
+
+    md = markdown.Markdown(extensions=[
+        'markdown.extensions.extra',
+        'markdown.extensions.codehilite',
+        'markdown.extensions.toc',
+    ])
+
+    # 记得在顶部导入 CommentForm
+    form = CommentForm()
+    # 获取这篇 post 下的全部评论
+    comment_list = article.comment_set.all()
+
+    article.body = md.convert(article.body.replace("\r\n",'  \n'))
     return render(request, 'detail.html', {"article": article,
-                                             "source_id": article.id})
+                                           'form': form,
+                                           'comment_list': comment_list,
+                                           "source_id": article.id,
+                                           'toc': md.toc })
 
 
 
 
-def archive(request):
-    """
-    文章归档
-    """
-    article_list = Article.objects.order_by('-publish')
-    return render(request, 'archive.html', {"article_list": article_list})
+
+    # context = {'article':article}
+    # return  render(request,'detail.html',context)
+
+    # article.content = markdown.markdown(article.content.replace("\r\n", '  \n'),extensions=[
+    #                                  'markdown.extensions.extra',
+    #                                  'markdown.extensions.codehilite',
+    #                                  'markdown.extensions.toc',
+    #                               ],safe_mode=True,enable_attributes=False)
+
+
+
+
+# def archive(request):
+#     """
+#     文章归档
+#     """
+#     article_list = Article.objects.order_by('-publish')
+#     return render(request, 'archive.html', {"article_list": article_list})
+#
+
 
 
 
@@ -99,3 +150,51 @@ def articles(request, pk):
     return render(request, 'articles.html', {"article_list": article_list,
                                                   "category": category,
                                                   })
+
+
+
+def archive(request, year, month):
+    """
+    归档
+    :param request:
+    :param year:
+    :param month:
+    :return:
+    """
+    article_list = Article.objects.filter(publish__year=year,publish__month=month).order_by('-publish')
+    return render(request, 'archive.html', context={"article_list": article_list})
+
+
+
+
+
+
+
+class TagView(ListView):
+    model = Tag
+    context_object_name = 'tags'
+    template_name = 'tags.html'
+
+
+class CategoryView(ListView):
+    model = Category
+    context_object_name = 'categories'
+    template_name = 'category.html'
+
+
+class ArchiveView(ListView):
+    model = Article
+    context_object_name = 'posts'
+    template_name = 'archive.html'
+
+
+def tag(request, name):
+    """
+    标签
+    :param request:
+    :param name
+    :return:
+    """
+    article_list = Article.objects.filter(tag__tag_name=name)
+    return render(request, 'tag.html', {"article_list": article_list,
+                                             "tag": name})

@@ -4,16 +4,26 @@
 <html lang="zh-cn">
 
 <head>
-    <meta charset="UTF-8">
+
+    {% block title %}<title>存在的记忆 -以谁为师的博客</title> {% endblock %}
+
+    {% block meta %}
+        <meta charset="UTF-8">
+        <meta name="keywords" content="Python,运维开发,自动化,安全攻防以及极客技术分享的网站"/>
+        <meta name="description" content="j_hao104的博客,一个个人网站，IT技术分享，记录IT生活，提供技术分享和作品分享的个人网站"/>
+    {% endblock %}
+    <meta name="360-site-verification" content="55614caee7b7f9fda9f9e2f40723b151" />
+    <meta name="author" content="Logos" >
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- 移动设备缩放页面  "mete:vp"tab建 -->
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" >
     <!-- 高速浏览器有最新的引擎渲染 "meta:compat" tab...-->
     <link rel="stylesheet" href="">
     <!-- "link" tab...  -->
-    <meta name="description" content="Python,Django,自动化平台,安全技术," />
-    <meta name="author" content="Logos" />
-    <link rel='icon' href="{% static  'img/favicon.ico'%}" type='image/x-ico' />
+
+
+
+    <link rel='icon' href="{% static  'img/favicon.ico'%}" type='image/x-ico' >
 
 
     <!-- Bootstrap  CSS -->
@@ -25,12 +35,11 @@
 
 
     <!-- Code CSS-->
-    <link type="text/css" rel="stylesheet" href={% static 'css/code.css' %}"/>
+{#   <link href="{% static 'css/code.css' %}" rel="stylesheet">#}
+{#    <link type="text/css" rel="stylesheet" href={% static 'css/code.css' %} >#}
+<link rel="stylesheet" type="text/css" href="{% static 'css/code.css' %}">  {#语法高亮#}
 
 
-
-
-    <title>存在的记忆 -以谁为师的博客</title>
 
 </head>
 
@@ -58,6 +67,11 @@
 
     <script src="/static/js/jquery-3.3.1.min.js"></script>
     <script src="/static/js/bootstrap.js"></script>
+
+
+
+
+
 
 
 

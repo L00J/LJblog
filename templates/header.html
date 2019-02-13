@@ -15,13 +15,13 @@
     </ul>
 </div>-->
 
-            <div class="nav navbar-nav  navbar-right  hidden-xs">
-                <ul class="nav navbar-nav">
-                    <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> 登录</a></li>
-                    <li><a href="#"><span class="glyphicon glyphicon-user"></span> 注册</a></li>
-
-                </ul>
-            </div>
+{#            <div class="nav navbar-nav  navbar-right  hidden-xs">#}
+{#                <ul class="nav navbar-nav">#}
+{#                    <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> 登录</a></li>#}
+{#                    <li><a href="#"><span class="glyphicon glyphicon-user"></span> 注册</a></li>#}
+{##}
+{#                </ul>#}
+{#            </div>#}
 
 
             <!--折叠 响应式导航栏 -->
@@ -42,42 +42,40 @@
                     <li class="ative"><a href="/"> 主页 </a></li>
 
 
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">专题教程 <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
 
-                            {% for tutorial in tutorial_list %}
-                                <li><a href="#">{{ tutorial.name }}</a></li>
-                            {% endfor %}
+                    <li><a href="{% url "blog:articles" %}"> Python </a> </li>
 
-                        </ul>
-                    </li>
+                    <li><a href="#"> Web开发 </a> </li>
 
+                    <li><a href="#"> 安全攻防 </a> </li>
 
-                    <li><a href="{% url 'blog:articles'   %}"> 前端设计 </a> </li>
+                    <li><a href="#"> Ops </a> </li>
 
-                    <li><a href="{% url "blog:articles" %}"> Web开发 </a> </li>
+                    <li><a href="#"> 智能家电 </a> </li>
 
-                    <li><a href="{% url "blog:articles" %}"> 安全攻防 </a> </li>
+                    <li><a href="#"> 博彩娱乐 </a> </li>
 
-                    <li><a href="{% url "blog:articles" %}"> Ops </a> </li>
-
-                    <li><a href="{% url "blog:articles" %}"> 我的归档 </a></li>
+                    <li><a href="{% url "blog:articles" %}"> 归档 </a></li>
 
                 </ul>
 
 
                 <!-- 添加搜索表单 -->
-                <form action="" class="navbar-form navbar-left">
-                    <input type="text" placeholder="搜索 ..." class="form-control">
-                    <button type="submit">
-                        <span class="glyphicon glyphicon-search"></span>
+                <form action="{% url 'blog:search' %}"  method="get"  class="navbar-form  pull-right  ">
+
+                    <input type="search"  name='key' placeholder="搜索 ..." class="form-control ">
+
+                    <button type="submit" >
+                        <span class="glyphicon glyphicon-search "></span>
+
                         <!-- form-control 可以额外添加样式
                         glyphicon 小图标;button 按钮
 
                         https://getbootstrap.com/docs/3.3/components/-->
                     </button>
                 </form>
+
+{
 
             </div>
         </div>

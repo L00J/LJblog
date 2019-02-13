@@ -1,140 +1,226 @@
-       /*给导航栏腾空间 */
+/*给导航栏腾空间 */
 
-       body {
-           padding-top: 70px;
-       }
-
-
-
-       /*搜索表单自定义样式 */
-
-       .navbar-inverse input[type="text"] {
-           background: #ffecec;
-           border: none;
-           color: #999;
-       }
-
-       /*选择器 暗色背景 text类型的input样式;背景白色 边框none,搜索内容颜色*/
-
-       .navbar-inverse .navbar-form {
-           position: relative;
-       }
-
-       /*相对定位*/
-
-       .navbar-inverse button[type="submit"] {
-           position: absolute;
-           /*绝对的定位方式定位按钮*/
-           top: 30%;
-           right: 25px;
-           /*form标签 右移*/
-           background: none;
-           border: none;
-       }
-
-       .navbar-inverse .glyphicon {
-           color: #999;
-       }
+body {
+    padding-top: 70px;
+}
 
 
+/*字体左右浮动*/
+.div-left{ float:left; solid #F00}
+.div-right{ float:right; color: red; }
 
+.title_a1 { color: #333}
 
+/*搜索表单自定义样式 */
 
-       /*左边窗口*/
+.navbar-inverse input[type="text"] {
+    background: #ffecec;
+    border: none;
+    color: #999;
+}
 
-       .l_box {
-           width: 670px;
-       }
+/*选择器 暗色背景 text类型的input样式;背景白色 边框none,搜索内容颜色*/
 
-       .f_l {
-           float: left;
-       }
+.navbar-inverse .navbar-form {
+    position: relative;
+}
 
+/*相对定位*/
 
-       /*右边窗口*/
+.navbar-inverse button[type="submit"] {
+    position: absolute;
+    /*绝对的定位方式定位按钮*/
+    top: 30%;
+    right: 25px;
+    /*form标签 右移*/
+    background: none;
+    border: none;
+}
 
-       .r_box {
-           width: 300px;
-       }
-
-       .f_r {
-           float: right;
-       }
+.navbar-inverse .glyphicon {
+    color: #999;
+}
 
 
 
 
 
-       .articlelist {
-           width: 100%;
-           overflow: hidden;
-           margin-top: 25px;
-       }
+/*左边窗口*/
 
-       .article-right {
-           width: 71%;
-           float: right;
-           position: relative;
-       }
+.l_box {
+    width: 65%;
 
-       .article-right h4 {
-           padding: 0;
-           margin: 0;
-           background: none;
-           font-size: 18px;
-           padding-bottom: 11px;
-           text-indent: 0;
-           white-space: nowrap;
-           text-overflow: ellipsis;
-           overflow: hidden;
-       }
+}
 
-       .article-right ul {
-           width: 100%;
-           overflow: hidden;
-           position: absolute;
-       }
-
-       .article-right ul li {
-           float: left;
-           overflow: hidden;
-           padding: 0 5px;
-           font-size: 12px;
-           color: #888;
-           max-width: 150px;
-           overflow: hidden;
-           white-space: nowrap;
-           text-overflow: ellipsis;
-       }
-
-       ul,
-       dl,
-       dt,
-       dd,
-       p {
-           padding: 0;
-           margin: 0;
-           list-style: none;
-       }
+.f_l {
+    float: left;
+}
 
 
-       .tag-article {
+/*右边窗口*/
+
+.r_box {
+    width: 15%;
+
+}
+
+.f_r {
+    float: right;
+    padding: 20px 30px
+    background: #f7f7f7;
+}
+
+
+
+
+
+.articlelist {
+    width: 100%;
+    overflow: hidden;
+    margin-top: 25px;
+}
+
+.article-right {
+    width: 71%;
+    float: right;
+    position: relative;
+}
+
+.article-right h4 {
+    padding: 0;
+    margin: 0;
+    background: none;
+    font-size: 18px;
+    padding-bottom: 11px;
+    text-indent: 0;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.article-right ul {
+    width: 100%;
+    overflow: hidden;
+    position: absolute;
+}
+
+.article-right ul li {
+    float: left;
+    overflow: hidden;
+    padding: 0 5px;
+    font-size: 12px;
+    color: #888;
+    max-width: 150px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+ul,
+dl,
+dt,
+dd,
+p {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+
+.tag-article {
     text-align: center;
     line-height: 24px;
     margin: 20px;
 }
 
-       .label {
+.label {
     margin-right: 5px;
-       }
+}
 
-           .article {
+.article {
     position: relative;
     margin-bottom: 30px;
     padding-bottom: 20px;
 }
 
-       .title-article {
+.title-article {
     padding: 20px 15px 0px 15px;
 }
 
+
+.cloud { width:100%; clear: both; overflow: hidden;border-radius:0px;border:0px solid #eee;margin-top:30px;overflow:auto;padding-bottom:15px;}
+.cloud ul {width:95%;margin:auto;overflow:hidden;}
+.cloud ul li {padding:0.1em 0.5em 0.1em 0.5em;float:left;text-align:center; border-radius:0.5em;margin:0.3em 1% 0.3em 1%;-moz-transition: all 0.5s; -webkit-transition: all 0.5s; -o-transition: all 0.5s; transition: all 0.5s; }
+.cloud ul li a { color: #FFF;font-size:12px;}
+.cloud ul li:hover { border-radius: 0; text-shadow: #000 1px 1px 1px }
+.cloud ul li:nth-child(8n-4) { background: #20a8fe }
+.cloud ul li:nth-child(8n-3) { background: #EB6841 }
+.cloud ul li:nth-child(8n-2) { background: #3FB8AF }
+.cloud ul li:nth-child(8n-1) { background: #FE4365 }
+.cloud ul li:nth-child(8n-5) { background: #FC9D9A }
+.cloud ul li:nth-child(8n-6) { background: #EDC951 }
+.cloud ul li:nth-child(8n-7) { background: #C8C8A9 }
+.cloud ul li:nth-child(8n) { background: #83AF9B }
+.cloud ul li:first-child { background: #036564 }
+.cloud ul li:last-child { background: #3299BB }
+
+.bg-color{background:rgba(255,255,255,0.5);}
+
+.index-title{font-size:14px;color:#0181da;font-weight:normal;}
+.index-title small{color:#bcbcbc;margin-left:5px;font-size:12px;}
+
+.side-link{margin-top:30px;width:100%;}
+.side-link ul{width:95%;margin:auto;margin-top:10px;text-align:center;overflow:hidden;padding-bottom:10px;}
+.side-link ul li{float:left;overflow:hidden;}
+.side-link ul li a{display:inline-block;padding:1px 10px;margin:0 5px 10px 5px;color:#ff6700;font-size:12px;background:linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.1),rgba(255,255,255,0.9));border:1px solid #eee;border-radius:3px ;-webkit-border-radius:3px;transition:all 0.5s;-webkit-transition:all 0.5s;
+background: -webkit-linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.1),rgba(255, 255, 255, 0.9));
+}
+.side-link ul li a:hover{border-radius:0;-webkit-border-radius:0;box-shadow:3px 3px 5px #ccc;text-shadow:0 0px 3px #000;color:#fff;}
+.side-link h4 a{float:right;margin-right:10px;}
+
+.side{width:28%;float:right;}
+
+.bg-color {
+    background: rgba(255, 255, 255, .5);
+    text-align: left
+}
+
+/*搜索边框*/
+.seek-border {width: 30%;}
+
+
+img {
+    border: none;
+}
+
+
+
+/*section*/
+/*.container{width:100%;max-width:1300px;min-width:320px;margin:auto;overflow:hidden;padding-top:100px;}*/
+
+.mysection{width:65%;float:left;}
+
+
+.arclist{width:100%;overflow:hidden;margin-top:25px;}
+.arclist >ul{width:100%;}
+.arclist>ul>li{width:100%;margin:auto;padding:25px;box-sizing:border-box;margin-bottom:25px;overflow:hidden;position:relative;background:rgba(255,255,255,0.5);}
+.arclist>ul>li> .arcimg{width:25%;height:105px;float:left;overflow:hidden;}
+.arclist>ul>li> .arcimg img{width:100%;height:100%;transition: all 0.5s;-webkit-transition: all 0.5s;}
+.arc-right{width:71%;float:right;position:relative;}
+.arc-right h4{padding:0;margin:0;background:none;font-size:18px;padding-bottom:11px;text-indent:0;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;}
+.arc-right p{font-size:13px;overflow:hidden;text-overflow:ellipsis;height:54px;color:#515151;}
+.arc-right ul{width:100%;overflow:hidden;position:absolute;}
+.arc-right ul li{float:left;overflow:hidden;padding:0 5px;font-size:12px;color:#888;    max-width: 150px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;}
+.arc-right ul li:last-child{float:right;}
+.arclist>ul>li:hover img{transform:scale(1.1);}
+
+
+
+
+
+img{
+ width:auto;
+ height:auto;
+ max-width:100%;
+ max-height:100%;
+}
