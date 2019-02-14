@@ -1,6 +1,7 @@
 from fabric.api import env,run,cd,local,task,abort
 from fabric.colors import green,yellow,red
 from fabric.context_managers import settings,hide
+from fabric.contrib.console import confirm 
 
 import datetime
 nowTime=datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
