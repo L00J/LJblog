@@ -26,18 +26,15 @@
 
                     <div class="span3">
 
-                        <h4> 运维圈大本营</h4>
-                        <h4>QQ群 <font size="3" color="#FF0000">5501770161</font>  </h4>
+                        <h4> 运维圈大本营QQ群:</h4>
+                        <p> <font size="3" color="#FF0000">5501770161</font>  </p>
 
-                        <img src="/media/home_page/yw.jpg" style="width:80%">
+                        <img src="/media/home_page/yw.jpg" style="width:50%">
                         <br/>
                         <br/>
 
-                        {#                                <h4> 极客技术联盟</h4>#}
-                        {#                                <h4>QQ群 <font color="#FF0000">294086516</font>  </h4>#}
-                        {#                                <img src="/media/home_page/hacker.jpeg" style="width:80%">#}
 
-                        <br/>
+
 
 
 
@@ -50,7 +47,7 @@
                                 {% for tag in tag_all %}
 
 
-                                    <li><a href="{% url "blog:tag" %}" title="标签：{{ tag }} ">{{ tag }}</a></li>
+                                    <li><a href="{% url "blog:tag" %}{{ tag }}" title="标签：{{ tag }} ">{{ tag }}</a></li>
 
 
                                 {% endfor %}

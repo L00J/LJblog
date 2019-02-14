@@ -18,8 +18,8 @@ class Comment(models.Model):
 
     article = models.ForeignKey('blog.Article',on_delete=models.CASCADE)
 
-    def __str__(self):
-        return self.text[:20]
+    # def __str__(self):
+    #     return self.text[:20]
 
     def commenced(self):
         """
@@ -28,5 +28,11 @@ class Comment(models.Model):
         """
         self.comment += 1
         self.save(update_fields=['comment'])
+
+    class Meta:
+        verbose_name_plural = "评论"
+
+    def __str__(self):
+        return self.name
 
 

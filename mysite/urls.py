@@ -29,7 +29,6 @@ urlpatterns = [
     path('mdeditor/',include('mdeditor.urls')),
     re_path(r'^robots\.txt$', TemplateView.as_view(template_name='robots.txt', content_type='text/plain')),
 
-
 ]
 
 #http://127.0.0.1:8000/blog

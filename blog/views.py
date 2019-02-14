@@ -16,9 +16,12 @@ from django.db.models import Q
 
 from comments.forms import CommentForm
 
+
 def search(request):
     key = request.GET.get('key')
     error_msg = ''
+
+    tag_all = [tag for tag in Tag.objects.all()]
 
     if not key:
         error_msg = "请输入关键词"
@@ -28,6 +31,7 @@ def search(request):
     # 全文搜索
     article_list = Article.objects.filter(title__icontains=key)
     return render(request, 'index.html', {'error_msg': error_msg,
+                                          "tag_all" : tag_all,
                                                "article_list": article_list, "key": key})
 
 
@@ -41,8 +45,6 @@ def index(request):
     article_list = Article.objects.order_by('-publish')[:5] #最近5篇文章
 
 
-
-
     front_list = Article.objects.filter(category__name__contains="前端设计").order_by('-publish')[:5]
     web_list = Article.objects.filter(category__name__contains="Web开发").order_by('-publish')[:5]
     db_list = Article.objects.filter(category__name__contains="数据存储").order_by('-publish')[:5]
@@ -52,15 +54,8 @@ def index(request):
 
     ops_list = Article.objects.filter(category__name__contains="Ops").order_by('-publish')[:5]
     sec_list = Article.objects.filter(category__name__contains="安全").order_by('-publish')[:5]
+
     tag_all =  [tag for tag in Tag.objects.all()]
-
-
-
-
-
-
-
-    #Tutorial1 = Part.objects.filter(tutorial=Tutorial.objects.get(name="blog"))
 
     return render(request, 'index.html', locals())
 
@@ -73,6 +68,12 @@ def detail(request, pk):
     """
     article = get_object_or_404(Article, pk=pk)
     article.viewed()#阅读量统计
+
+    ua = request.META.get('HTTP_USER_AGENT')
+
+
+
+
 
     # article.body = markdown.markdown(article.body.replace("\r\n", '  \n'),
     # # article.body = markdown.markdown(article.body,
@@ -99,6 +100,7 @@ def detail(request, pk):
     article.body = md.convert(article.body.replace("\r\n",'  \n'))
     return render(request, 'detail.html', {"article": article,
                                            'form': form,
+                                           "ua":ua,
                                            'comment_list': comment_list,
                                            "source_id": article.id,
                                            'toc': md.toc })
@@ -184,7 +186,7 @@ class CategoryView(ListView):
 
 class ArchiveView(ListView):
     model = Article
-    context_object_name = 'posts'
+    context_object_name = 'article_list'
     template_name = 'archive.html'
 
 
@@ -195,6 +197,25 @@ def tag(request, name):
     :param name
     :return:
     """
-    article_list = Article.objects.filter(tag__tag_name=name)
-    return render(request, 'tag.html', {"article_list": article_list,
-                                             "tag": name})
+
+    tag_all = [tag for tag in Tag.objects.all()]
+
+    article_list = Article.objects.filter(tags__name=name)
+    return render(request, 'index.html', {"article_list": article_list,
+                                          "tag_all":tag_all
+                                          })
+
+def category(request, pk):
+    # 记得在开始部分导入 Category 类
+
+    tag_all = [tag for tag in Tag.objects.all()]
+
+    cate = get_object_or_404(Category, pk=pk)
+    article_list = Article.objects.filter(category=cate).order_by('-publish')
+    return render(request, 'index.html', context={'article_list': article_list,
+                                                  "tag_all":tag_all,
+                                                  })
+
+
+
+

@@ -41,17 +41,24 @@
 
                                     <li class="glyphicon glyphicon-user"><i class="el-user"></i> {{ article.author.upper }}  &nbsp </li>
 
-                                    <li class="glyphicon glyphicon-time"><a href="http://127.0.0.1:8000/archive/{{ article.publish.year }}/{{ article.publish.month }}"  title="发表于: {{ article.publish }}">
+                                    <li class="glyphicon glyphicon-time"><a href="http://127.0.0.1:8000/archive/{   { article.publish.year }}/{{ article.publish.month }}"  title="发表于: {{ article.publish }}">
                                         <i class="el-time"></i>{{ article.publish.year }}年{{ article.publish.month }}月&nbsp</a></li>
 
 
-                                    <li class="glyphicon glyphicon-pencil"> <a href="#" title="已有 {{ article.comment }} 条评论">
-                                        <i class="el-comment"> {{ article.comment }}条评论&nbsp</i></a></li>
+{#                                    <li class="glyphicon glyphicon-pencil"> <a href="#" title="已有 {{ article.comment_set.all }} 条评论">#}
+{#                                        <i class="el-comment"> {{ article.comment }}条评论&nbsp</i></a></li>#}
 
                                     {#                                <li class="glyphicon glyphicon-eye-open"> <a title="已有 {{ article.view }} 次浏览">#}
                                     {#                                    <i class="el-eye-open"></i>{{ article.view }}</a></li>#}
 
-                                    <li class="glyphicon glyphicon-th-list"> <a href="#" pk=article.category %}" title="分类"><i class="el-th-list"></i>{{ article.category }}</a></li>
+
+{#                                    {% for category in category_list %}#}
+{#                                        {{ category }}#}
+
+                                        <li class="glyphicon glyphicon-th-list"> <a href="{% url "blog:category" article.category.pk   %} " title="分类"><i class="el-th-list"></i>{{ article.category }}</a></li>
+
+{#                                    {% endfor %}#}
+
                                 </ul>
                             </div>
 

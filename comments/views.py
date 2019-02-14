@@ -36,7 +36,8 @@ def article_comment(request, pk):
 
             # 重定向到 post 的详情页，实际上当 redirect 函数接收一个模型的实例时，它会调用这个模型实例的 get_absolute_url 方法，
             # 然后重定向到 get_absolute_url 方法返回的 URL。
-            return redirect(article)
+            # return redirect(article)
+            return redirect('blog:detail', pk=pk)
 
         else:
             # 检查到数据不合法，重新渲染详情页，并且渲染表单的错误。

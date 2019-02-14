@@ -18,20 +18,20 @@
 
 
 
-        {% for article in article_list %}
-            {% if  forloop.first %}
-           <li><h4> {{ article.publish.month }}月发表</h4></li>
-                <hr/>
-            {% endif %}
+            {% for article in article_list %}
 
 
-            <li> {{ article.publish.month}}月{{ article.publish.day }}日  <a href="{% url "blog:detail" pk=article.id%}">   <strong> {{ article.title }} </strong>
 
-           </a>
-            </li>
-            <br/>
 
-        {% endfor %}
+<li> {{ article.publish.month}}月{{ article.publish.day }}日  <a href="{% url "blog:detail" pk=article.id%}">   <strong> {{ article.title }} </strong>
+
+
+
+
+                </a>
+                </li>
+                <br/>
+            {% endfor %}
 
 
 

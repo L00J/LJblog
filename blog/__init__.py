@@ -4,7 +4,7 @@ import os
 
 
 default_app_config = 'blog.Article'
-VERBOSE_APP_NAME = "文章"
+VERBOSE_APP_NAME = "文章管理"
 
 
 def get_current_app_name(_file):

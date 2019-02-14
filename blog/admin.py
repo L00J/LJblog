@@ -2,6 +2,7 @@ from django.contrib import admin
 
 from .models import Article,Category,Tag
 
+
 # from mdeditor.widgets import MDEditorWidget
 
 
@@ -16,6 +17,7 @@ class Articleslist(admin.ModelAdmin):
         if request.user.is_superuser:
             return qs
         return qs.filter(author = request.user )
+
 
     #ordering = []
     list_display = ['title','category','mod_date','author'] #分类

@@ -47,6 +47,10 @@ urlpatterns = [
     re_path(r'^search/$', views.search, name='search'),
 
 
+    re_path(r'^tag/(?P<name>.*?)/$', views.tag, name='tag'),
+    re_path(r'^category/(?P<pk>\d+)/$', views.category, name='category'),
+
+
   
     # ex: /polls/5/
     # ex: /polls/5/results/
