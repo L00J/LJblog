@@ -31,6 +31,7 @@ def local_unit_test():
 
 
 def download_code():
+    run("git checkout .")
     run("git pull")
     print(green("\n[%s] 完成代码下载" % env.hosts))
 
