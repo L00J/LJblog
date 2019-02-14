@@ -36,6 +36,7 @@ def download_code():
 def app ():
     run("python3 manage.py collectstatic --noinput &&python3 manage.py migrate")
     run('''sed -i "/ALLOWED_HOSTS/c ALLOWED_HOSTS= \['127.0.0.1','.attacker.club'\]" mysite/settings.py ''' )
+     run ("sed  -i  's#/data/LJblog#/www/django/blog#' /www/django/blog/mysite/settings.py")
     run("sed -i  's/DEBUG = True/DEBUG = False/' mysite/settings.py")
     run("/usr/bin/supervisord -c /etc/supervisor/supervisord.conf")
     print(green("\n[%s] app完成部署" % env.hosts))
