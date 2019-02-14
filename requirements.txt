@@ -1,4 +1,7 @@
-Django
-django-mdeditor
+Django==2.1.5
+django-appconf==1.0.2
+django-mdeditor==0.1.13
 Markdown==2.6.11
+Pillow==5.4.1
+Pygments==2.3.1
 pytz==2018.5

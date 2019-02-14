@@ -22,7 +22,7 @@ def get_git_status():
 
 def local_unit_test():
     with settings(warn_only=True):
-        test_result = local("python manage.py test")
+        test_result = local("python3 manage.py test")
         if test_result.failed:
             print (test_result)
             if not confirm(red("单元测试失败，是否继续？")):
@@ -34,7 +34,7 @@ def download_code():
     print(green("\n[%s] 完成代码下载" % env.hosts))
 
 def app ():
-    run("python manage.py collectstatic --noinput &&python manage.py migrate")
+    run("python3 manage.py collectstatic --noinput &&python3 manage.py migrate")
     run('''sed -i "/ALLOWED_HOSTS/c ALLOWED_HOSTS= \['127.0.0.1','.attacker.club'\]" mysite/settings.py ''' )
     run("sed -i  's/DEBUG = True/DEBUG = False/' mysite/settings.py")
     run("/usr/bin/supervisord -c /etc/supervisor/supervisord.conf")
