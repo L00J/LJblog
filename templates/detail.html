@@ -12,6 +12,19 @@
     <div class="container">
 
 
+              <!-- 新增的目录 -->
+            <div class="col-md-3">
+                <h4><strong>目录</strong></h4>
+                <hr>
+                <div>
+                    <ul>
+                        {{ toc|safe }}
+
+                    </ul>
+                </div>
+            </div>
+
+
 
         <div class="row">
             <!-- 将原有内容嵌套进新的div中 -->
@@ -23,16 +36,6 @@
                 {{ article.body |safe }}
             </div>
 
-            <!-- 新增的目录 -->
-            <div class="col-md-3">
-                <h4><strong>目录</strong></h4>
-                <hr>
-                <div>
-                    <ul>
-                        {{ toc|safe }}
-                    </ul>
-                </div>
-            </div>
 
 
 
