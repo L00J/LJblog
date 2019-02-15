@@ -30,10 +30,18 @@
             <!-- 将原有内容嵌套进新的div中 -->
             <div class="col-lg-9" >
 
-                <h1 class="mt-4 mb-4">{{ article.title }}</h1>
-                <p> 发表于: {{ article.publish }} 浏览量{{ article.view }}</p>
+
+
+                <h2  class="mt-3 mb-3 ">{{ article.title }}</h2>
+
+               <p class="glyphicon glyphicon-time" >&nbsp{{ article.publish.date }}
+                   浏览量:&nbsp{{ article.view }} </p>
+
+                <hr/>
+
 
                 {{ article.body |safe }}
+
             </div>
 
 

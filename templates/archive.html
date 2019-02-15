@@ -17,13 +17,12 @@
         <ul class="timeline">
 
 
-
+<hr/>
             {% for article in article_list %}
 
 
 
-
-<li> {{ article.publish.month}}月{{ article.publish.day }}日  <a href="{% url "blog:detail" pk=article.id%}">   <strong> {{ article.title }} </strong>
+<li>  {{ article.publish.date }}  <a href="{% url "blog:detail" pk=article.id%}">   <strong> {{ article.title }} </strong>
 
 
 
