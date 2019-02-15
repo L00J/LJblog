@@ -39,8 +39,9 @@ python manage.py loaddata  dump_blog.json
 
 ### 效果预览
 
-图1：
-![首页](doc/index.png)
+首页:
+![首页](doc/index.jpg)
 
-图2：
-![后台](doc/admin.png)
+文章发布图：
+![后台](doc/article1.jpg)
+![后台](doc/article2.jpg)
