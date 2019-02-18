@@ -27,12 +27,20 @@ def search(request):
         error_msg = "请输入关键词"
         return render(request, 'index.html', {'error_msg': error_msg})
 
+    elif request.user.is_superuser:
+        article_list = Article.objects.filter(title__icontains=key)
+        return render(request, 'index.html', {'error_msg': error_msg,
+                                              "tag_all": tag_all,
+                                              "article_list": article_list, "key": key})
+    else:
+        error_msg = "请登录后搜索"
+        return render(request, 'index.html', {'error_msg': error_msg})
+
     # article_list = Article.objects.filter(Q(title__icontains=key) | Q(body__icontains=key))
     # 全文搜索
-    article_list = Article.objects.filter(title__icontains=key)
-    return render(request, 'index.html', {'error_msg': error_msg,
-                                          "tag_all" : tag_all,
-                                               "article_list": article_list, "key": key})
+
+
+
 
 
 def index(request):
