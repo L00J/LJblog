@@ -105,13 +105,14 @@ def detail(request, pk):
 
     article.body = md.convert(article.body.replace("\r\n",'  \n'))
 
-    # context = {"article": article,
-    #            'form': form,
-    #            "ua":ua,
-    #            'comment_list': comment_list,
-    #            "source_id": article.id,
-    #            'toc': md.toc }
-    context = locals()
+    context = {"article": article,
+               'form': form,
+               "ua":ua,
+               "ipaddr":ipaddr,
+               'comment_list': comment_list,
+               "source_id": article.id,
+               'toc': md.toc }
+
     return render(request, 'detail.html',context )
 
 
