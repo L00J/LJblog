@@ -3,13 +3,11 @@ from django.contrib import admin
 from .models import Article,Category,Tag
 
 
-# from mdeditor.widgets import MDEditorWidget
 
 
-# 博客
+
+# 博客文章
 class Articleslist(admin.ModelAdmin):
-
-
 
     def get_queryset(self, request):
         """函数作用：使当前登录用户只能看到自己所属内容"""
@@ -22,7 +20,7 @@ class Articleslist(admin.ModelAdmin):
     #ordering = []
     list_display = ['title','category','mod_date','author'] #分类
     list_filter = ['publish','category'] #右侧过滤栏
-    list_editable = ['category'] #可编辑项
+    # list_editable = ['category'] #可编辑项
 
     empty_value_display = '无数据' # 空数据
     #fk_fields = ('tags',) # 设置显示外键字段
@@ -42,16 +40,15 @@ class Articleslist(admin.ModelAdmin):
         obj.save()
 
 
-# 教程
-# class TutorialList(admin.ModelAdmin):
-#     list_display = ['title','publish','mod_date','tutorial','view']
+# 分类展示
+class Categoryslist(admin.ModelAdmin):
+    list_display = ['id','name']  # 分类
+    list_editable = ['name']  # 可编辑项
 
 
 
-# 排序
+# 文章分类排序
 from django.utils.text import capfirst
-# from django.utils.datastructures import OrderedDict
-
 
 def find_model_index(name):
     count = 0
@@ -78,7 +75,7 @@ admin.site.app_index = index_decorator(admin.site.app_index)
 
 
 admin.site.register(Article,Articleslist)
-admin.site.register(Category)
+admin.site.register(Category,Categoryslist)
 admin.site.register(Tag)
 
 
