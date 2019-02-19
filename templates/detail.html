@@ -53,7 +53,6 @@
                 <p>最后更新： {{ article.mod_date }} </p>
                 <p> 原始链接： http://attacker.club{% url "blog:detail" pk=article.id %} </p>
                 <p> 转载本文请注明出处</p>
-                <p> 你的ip{{ ipaddr }} 你的客户端{{ ua }}</p>
             </div>
 
 
@@ -129,7 +128,7 @@
                                 {{ comment.text }}
                         </li>
                         <hr/>
-
+{#    <p> 你的ip{{ ipaddr }} 你的客户端{{ ua }}</p>#}
                     {% empty %}
                         暂无评论
                     {% endfor %}
