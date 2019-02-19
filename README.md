@@ -28,13 +28,14 @@ python manage.py runserver
 #启动服务
 ```
 
-### 导入数据
+### 维护调试
+**数据导入和导出**
 ```
+python manage.py dumpdata >  dump_blog.json 
+#导出文章内容
 python manage.py loaddata  dump_blog.json
-#导入文章内容（测试）
-# python manage.py dumpdata >  dump_blog.json #导出
+#导入内容
 ```
-
 
 
 ### 效果预览
@@ -45,3 +46,5 @@ python manage.py loaddata  dump_blog.json
 文章发布图：
 ![后台](doc/article1.jpg)
 ![后台](doc/article2.jpg)
+
+

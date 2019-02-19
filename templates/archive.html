@@ -6,7 +6,7 @@
 {% endblock %}
 
 {% block css %}
-     <link href="/static/css/archives.css" rel="stylesheet">
+    <link href="/static/css/archives.css" rel="stylesheet">
 {% endblock %}
 
 
@@ -16,20 +16,19 @@
     <section class="mysection main" style="animation: fuxiasuo 0.8s;">
         <ul class="timeline">
 
+    <h5> 记录数:{{ article_list.count }} </h5>
 
-<hr/>
+            <hr/>
+
+
             {% for article in article_list %}
 
-
-
-<li>  {{ article.publish.date }}  <a href="{% url "blog:detail" pk=article.id%}">   <strong> {{ article.title }} </strong>
-
-
-
-
-                </a>
-                </li>
+                <li>  {{ article.publish.date }}  <a href="{% url "blog:detail" pk=article.id%}">   <strong> {{ article.title }} </strong></a></li>
                 <br/>
+
+
+
+
             {% endfor %}
 
 
