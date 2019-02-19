@@ -53,6 +53,7 @@
                 <p>最后更新： {{ article.mod_date }} </p>
                 <p> 原始链接： http://attacker.club{% url "blog:detail" pk=article.id %} </p>
                 <p> 转载本文请注明出处</p>
+                <p> 你的ip{{ ipaddr }} 你的客户端{{ ua }}</p>
             </div>
 
 
@@ -140,7 +141,7 @@
 
     </div>
 
-{# 推送百度收录   #}
+{# 推送百度收录#}
 <script>
 (function(){
     var bp = document.createElement('script');
@@ -155,4 +156,18 @@
     s.parentNode.insertBefore(bp, s);
 })();
 </script>
+
+
+{# 访问统计#}
+    <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?affccdf2d768f6a7fab25ceb7e0cb4d5";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
 {% endblock %}

@@ -75,12 +75,10 @@ def detail(request, pk):
     博文详情
     """
     article = get_object_or_404(Article, pk=pk)
-    article.viewed()#阅读量统计
-
     ua = request.META.get('HTTP_USER_AGENT')
+    ipaddr = request.META['REMOTE_ADDR']
 
-
-
+    article.viewed()  # 阅读量统计
 
 
     # article.body = markdown.markdown(article.body.replace("\r\n", '  \n'),
@@ -107,12 +105,13 @@ def detail(request, pk):
 
     article.body = md.convert(article.body.replace("\r\n",'  \n'))
 
-    context = {"article": article,
-               'form': form,
-               "ua":ua,
-               'comment_list': comment_list,
-               "source_id": article.id,
-               'toc': md.toc }
+    # context = {"article": article,
+    #            'form': form,
+    #            "ua":ua,
+    #            'comment_list': comment_list,
+    #            "source_id": article.id,
+    #            'toc': md.toc }
+    context = locals()
     return render(request, 'detail.html',context )
 
 
