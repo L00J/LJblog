@@ -28,7 +28,7 @@ urlpatterns = [
     #re_path(r'^(?P<question_id>[0-9]+)/results/$', views.results, name='results'),
 
     re_path(r'^detail/(?P<pk>\d+)/$', views.detail, name='detail'),
-    re_path(r'^detail/(?P<pk>\d+)$', views.detail, name='detail'),
+    re_path(r'^detail/(?P<pk>\d+).html$', views.detail, name='detail'),
     #re_path(r'^archive/$', views.archive, name='archive'),
     re_path(r'^articles/$', views.archive, name='articles'),
     #re_path(r'^archive/(?P<year>[0-9]{4})/(?P<month>[0-9]{1,2})/$', views.archive, name='archive'),
