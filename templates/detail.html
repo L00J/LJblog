@@ -1,152 +1,190 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 
-
-
-
 {% block title %}<title>{{ article.title }}  -以谁为师的博客</title> {% endblock %}
 
 
 {% block content %}
 
-    <div class="container">
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span12">
 
+                <div class="row-fluid">
 
-              <!-- 新增的目录 -->
-            <div class="col-md-3">
-                <h4><strong>目录</strong></h4>
-                <hr>
-                <div>
-                    <ul>
-                        {{ toc|safe }}
+                    <!-- 文章内容 -->
+                    <div class="span8 l_box f_l">
+                        <h3 class="text-center">
+                            {{ article.title }}
+                        </h3>
+                        <p class="text-center">{{ article.publish.date }}&nbsp.
+                            浏览量:&nbsp{{ article.view }}&nbsp&nbsp&nbsp
 
-                    </ul>
-                </div>
-            </div>
-
-
-
-        <div class="row">
-            <!-- 将原有内容嵌套进新的div中 -->
-            <div class="col-lg-9" >
-
-
-
-                <h2  class="mt-3 mb-3 ">{{ article.title }}</h2>
-
-
-
-
-               <p class="glyphicon glyphicon-time" >&nbsp{{ article.publish.date }}
-                   浏览量:&nbsp{{ article.view }}&nbsp</p>
-
-                    {%  if user_login %}
-                      <a href="/admin/blog/article/{{ article.pk }}/change/"  class="glyphicon glyphicon-wrench" ></a>
-                {% endif %}
-
-
-
-                <hr/>
-
-
-                {{ article.body |safe }}
-
-            </div>
-
-
-
-
-            <div class="div-left alert-success " >
-                <img src={% static 'img/pay.jpg' %} alt="微信打赏" />
-                <p>作者： 以谁为师</p>
-                <p>最后更新： {{ article.mod_date }} </p>
-                <p> 原始链接： http://attacker.club{% url "blog:detail" pk=article.id %} </p>
-                <p> 转载本文请注明出处</p>
-            </div>
-
-
-        </div>
-
-        <hr/>
-        <br/>
-
-        <div class="row">
-            <div class="col-lg-8" >
-                <form action="{% url 'comments:article_comment' article.pk %}" method="post" class="comment-form">
-                    {% csrf_token %}
-                    <div class="row">
-
-                        <div class="col-md-3">
-                            <label for="{{ form.name.id_for_label }}">用户：</label>
-                            {{ form.name }}
-                            {{ form.name.errors }}
-                        </div>
-
-                        <div class="col-md-3">
-                            <label for="{{ form.email.id_for_label }}">Email：</label>
-                            {{ form.email }}
-                            {{ form.email.errors }}
-                        </div>
-
-                        <div class="col-md-3">
-                            <label for="{{ form.url.id_for_label }}">website：</label>
-                            {{ form.url }}
-                            {{ form.url.errors }}
-                        </div>
-
-
-
-
-
-                        <div class="col-md-12">
-                            {#                            <label for="{{ form.text.id_for_label }}">评论：</label>#}
-                            <br/>
-                            {{ form.text }}
-                            {{ form.text.errors }}
-                            <button type="submit" class="comment-btn">发表</button>
-                        </div>
-                    </div>    <!-- row -->
-                </form>
-                <br/>
-
-                <ul class="comment-list list-unstyled">
-
-                    <h3>留言区:</h3><hr/>
-
-
-                    {% for comment in comment_list %}
-
-                        <li class="comment-item">
-
-                        <img src="/media/home_page/1.jpeg" style="width:5%">
-
-                            <span class="nickname"> <strong> {{ comment.name }}  </strong></span>
-
-                            {% if comment.url %}
-                                <a href= "{{ comment.url }}" target="_blank">
-                                    <span class="glyphicon glyphicon-link "></span>
-                                </a>
+                            {%  if user_login %}
+                                <a href="/admin/blog/article/{{ article.pk }}/change/"  class="glyphicon glyphicon-wrench" ></a>
                             {% endif %}
+                        </p>
 
-                            <time class="submit-date">{{ comment.created_time }}</time>
+                        <br/>
+                        {{ article.body |safe }}
+                    </div>
+
+
+                     <!-- 右侧栏 -->
+                    <div class="side">
+                        <br/><br/>
+
+                        {% if toc %}
+                            <h4>
+                                目录
+                            </h4>
+                            <ul>
+
+                                {{ toc|safe }}
+                                <hr/>
+
+                            </ul>
+
+                        {% endif %}
 
 
 
-                            <div class="text">
-                                <br/>
-                                {{ comment.text }}
-                        </li>
-                        <hr/>
-{#    <p> 你的ip{{ ipaddr }} 你的客户端{{ ua }}</p>#}
-                    {% empty %}
-                        暂无评论
-                    {% endfor %}
-                </ul>
+{##}
+{##}
+{#                            <h4 > 运维圈大本营QQ群:</h4>#}
+{#                            <p> <font size="3" color="#FF0000">5501770161</font>  </p>#}
+{#                            <br>#}
+{##}
+{#                            <img src="/media/home_page/yw.jpg" style="width:80%" class="img-rounded center-block">#}
+{#                            <br/>#}
+{#                            <br/>#}
+{##}
+{##}
+{##}
+{#                            <h2>#}
+{#                                xxx#}
+{#                            </h2>#}
+{#                            <p>#}
+{#                                本可视化布局#}
+{#                            </p>#}
+{#                            <p>#}
+{#                                <a class="btn" href="#">github »</a> <a class="btn" href="#">xops.attacker.club »</a>#}
+{#                            </p>#}
+
+
+
+                            <!--标签-->
+                            <div class="cloud bg-color animation-div">
+                                <h4 class="index-title"><i class="el-tags"></i>标签云
+                                    <small>Tags Clouds</small>
+                                </h4>
+                                <ul id="3dcloud">
+                                    {% for tag in tag_all %}
+
+
+                                        <li><a href="{% url "blog:tag" %}{{ tag }}" title="标签：{{ tag }} ">{{ tag }}</a></li>
+
+
+                                    {% endfor %}
+                                </ul>
+                            </div>
+
+
+                    </div>
+
+
+                    <!-- 文尾声明 -->
+                    <div class="div-left alert-success " >
+                        <img src={% static 'img/pay.jpg' %} alt="微信打赏" />
+                        <p>作者： 以谁为师</p>
+                        <p>最后更新： {{ article.mod_date }} </p>
+                        <p> 原始链接： http://attacker.club{% url "blog:detail" pk=article.id %} </p>
+                        <p> 转载本文请注明出处</p>
+                    </div>
+
+
+                    <!-- 底部评论 -->
+                    <div class="row">
+                        <div class="col-lg-8" >
+                            <hr/><br/>
+                            <form action="{% url 'comments:article_comment' article.pk %}" method="post" class="comment-form">
+                                {% csrf_token %}
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <label for="{{ form.name.id_for_label }}">用户：</label>
+                                        {{ form.name }}
+                                        {{ form.name.errors }}
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <label for="{{ form.email.id_for_label }}">Email：</label>
+                                        {{ form.email }}
+                                        {{ form.email.errors }}
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <label for="{{ form.url.id_for_label }}">website：</label>
+                                        {{ form.url }}
+                                        {{ form.url.errors }}
+                                    </div>
+
+
+
+
+
+                                    <div class="col-md-12">
+                                        {#                            <label for="{{ form.text.id_for_label }}">评论：</label>#}
+                                        <br/>
+                                        {{ form.text }}
+                                        {{ form.text.errors }}
+                                        <button type="submit" class="comment-btn">发表</button>
+                                    </div>
+                                </div>    <!-- row -->
+                            </form>
+                            <br/>
+
+                            <ul class="comment-list list-unstyled">
+
+                                <h3>留言区:</h3><hr/>
+
+
+                                {% for comment in comment_list %}
+
+                                    <li class="comment-item">
+
+                                        <img src="/media/home_page/1.jpeg" style="width:5%">
+
+                                        <span class="nickname"> <strong> {{ comment.name }}  </strong></span>
+
+                                        {% if comment.url %}
+                                            <a href= "{{ comment.url }}" target="_blank">
+                                                <span class="glyphicon glyphicon-link "></span>
+                                            </a>
+                                        {% endif %}
+
+                                        <time class="submit-date">{{ comment.created_time }}</time>
+
+
+
+                                        <div class="text">
+                                            <br/>
+                                            {{ comment.text }}
+                                    </li>
+                                    <hr/>
+                                    {#    <p> 你的ip{{ ipaddr }} 你的客户端{{ ua }}</p>#}
+                                {% empty %}
+                                    暂无评论
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+
+
+                </div>
+
             </div>
+
         </div>
-
-
-
     </div>
 
 

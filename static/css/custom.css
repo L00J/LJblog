@@ -173,9 +173,9 @@ p {
 .side-link ul{width:95%;margin:auto;margin-top:10px;text-align:center;overflow:hidden;padding-bottom:10px;}
 .side-link ul li{float:left;overflow:hidden;}
 .side-link ul li a{display:inline-block;padding:1px 10px;margin:0 5px 10px 5px;color:#ff6700;font-size:12px;background:linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.1),rgba(255,255,255,0.9));border:1px solid #eee;border-radius:3px ;-webkit-border-radius:3px;transition:all 0.5s;-webkit-transition:all 0.5s;
-background: -webkit-linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.1),rgba(255, 255, 255, 0.9));
+.background:-webkit-linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.1),rgba(255, 255, 255, 0.9));
 }
-.side-link ul li a:hover{border-radius:0;-webkit-border-radius:0;box-shadow:3px 3px 5px #ccc;text-shadow:0 0px 3px #000;color:#fff;}
+.side-link ul li a:hover{border-radius:0;-webkit-border-radius:0;box-shadow:3px 3px 5px #cccc;text-shadow:0 0px 3px #000;color:#fff;}
 .side-link h4 a{float:right;margin-right:10px;}
 
 .side{width:28%;float:right;}

@@ -94,6 +94,8 @@ def detail(request, pk):
     article.body = md.convert(article.body.replace("\r\n",'  \n'))
     toc = md.toc
 
+    tag_all = [tag for tag in Tag.objects.all()]
+
     if request.user.is_authenticated:
         user_login = True
 
