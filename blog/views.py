@@ -27,7 +27,7 @@ def search(request):
         error_msg = "请输入关键词"
         return render(request, 'index.html', {'error_msg': error_msg})
 
-    elif request.user.is_superuser:
+    elif request.user.is_authenticated: #判断是否登录
         article_list = Article.objects.filter(title__icontains=key)
         return render(request, 'index.html', {'error_msg': error_msg,
                                               "tag_all": tag_all,
@@ -80,18 +80,6 @@ def detail(request, pk):
 
     article.viewed()  # 阅读量统计
 
-
-    # article.body = markdown.markdown(article.body.replace("\r\n", '  \n'),
-    # # article.body = markdown.markdown(article.body,
-    #                               extensions=[
-    #                                   'markdown.extensions.extra',
-    #                                   'markdown.extensions.codehilite',
-    #                                   'markdown.extensions.toc',
-    #                               ],safe_mode=True,enable_attributes=False)
-    # return render(request, 'detail.html', {"article": article,
-    #                                        "source_id": article.id,
-    #              } )
-
     md = markdown.Markdown(extensions=[
         'markdown.extensions.extra',
         'markdown.extensions.codehilite',
@@ -104,15 +92,22 @@ def detail(request, pk):
     comment_list = article.comment_set.all()
 
     article.body = md.convert(article.body.replace("\r\n",'  \n'))
+    toc = md.toc
 
-    context = {"article": article,
-               'form': form,
-               "ua":ua,
-               "ipaddr":ipaddr,
-               'comment_list': comment_list,
-               "source_id": article.id,
-               'toc': md.toc }
+    if request.user.is_authenticated:
+        user_login = True
 
+
+
+    # context = {"article": article,
+    #            'form': form,
+    #            "ua":ua,
+    #            "ipaddr":ipaddr,
+    #            'comment_list': comment_list,
+    #            "source_id": article.id,
+    #            'toc': md.toc }
+
+    context = locals()
     return render(request, 'detail.html',context )
 
 
@@ -207,13 +202,18 @@ def tag(request, name):
     :param name
     :return:
     """
-
     tag_all = [tag for tag in Tag.objects.all()]
-
     article_list = Article.objects.filter(tags__name=name)
     return render(request, 'index.html', {"article_list": article_list,
-                                          "tag_all":tag_all
-                                          })
+                                              "tag_all": tag_all
+                                              })
+
+
+
+
+
+
+
 
 def category(request, pk):
     # 记得在开始部分导入 Category 类

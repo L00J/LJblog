@@ -34,8 +34,17 @@
 
                 <h2  class="mt-3 mb-3 ">{{ article.title }}</h2>
 
+
+
+
                <p class="glyphicon glyphicon-time" >&nbsp{{ article.publish.date }}
-                   浏览量:&nbsp{{ article.view }} </p>
+                   浏览量:&nbsp{{ article.view }}&nbsp</p>
+
+                    {%  if user_login %}
+                      <a href="/admin/blog/article/{{ article.pk }}/change/"  class="glyphicon glyphicon-wrench" ></a>
+                {% endif %}
+
+
 
                 <hr/>
 

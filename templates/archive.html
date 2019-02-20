@@ -23,7 +23,7 @@
 
             {% for article in article_list %}
 
-                <li>  {{ article.publish.date }}  <a href="{% url "blog:detail" pk=article.id%}">   <strong> {{ article.title }} </strong></a></li>
+                <li>  {{ article.publish.date }}  <a href="{% url "blog:detail" pk=article.id%}">   <strong> {{ article.title|truncatechars:15 }}  </strong></a></li>
                 <br/>
 
 
