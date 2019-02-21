@@ -17,7 +17,7 @@
                         <h3 class="text-center">
                             {{ article.title }}
                         </h3>
-                        <p class="text-center">{{ article.publish.date }}&nbsp.
+                        <p class="text-center">{{ article.publish.date }}&nbsp&sdot;
                             浏览量:&nbsp{{ article.view }}&nbsp&nbsp&nbsp
 
                             {%  if user_login %}
@@ -38,12 +38,10 @@
                             <h4>
                                 目录
                             </h4>
-                            <ul>
 
-                                {{ toc|safe }}
+                               {{ toc|safe }}
                                 <hr/>
 
-                            </ul>
 
                         {% endif %}
 
@@ -150,19 +148,20 @@
 
                                 {% for comment in comment_list %}
 
+
                                     <li class="comment-item">
 
                                         <img src="/media/home_page/1.jpeg" style="width:5%">
 
-                                        <span class="nickname"> <strong> {{ comment.name }}  </strong></span>
+                                        <span class="nickname">{{ forloop.counter }}楼 <strong> {{ comment.name }}  </strong></span>
 
-                                        {% if comment.url %}
+                                        <time class="submit-date">&sdot;&nbsp{{ comment.created_time }}</time>
+
+                                             {% if comment.url %}
                                             <a href= "{{ comment.url }}" target="_blank">
-                                                <span class="glyphicon glyphicon-link "></span>
+                                                <span class="glyphicon glyphicon-link ">网站</span>
                                             </a>
                                         {% endif %}
-
-                                        <time class="submit-date">{{ comment.created_time }}</time>
 
 
 

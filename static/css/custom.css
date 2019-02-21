@@ -126,6 +126,8 @@ p {
     list-style: none;
 }
 
+.toc ul {width:92%;margin:auto;}
+
 
 .tag-article {
     text-align: center;
