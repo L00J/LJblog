@@ -2,26 +2,47 @@
     <!--导航开始-->
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <!--navbar-inverse 黑色背景导航栏,navbar-fixed-top 导航栏固定到顶部 -->
+
+           {%  if not user_login %}
+                  <div class="nav navbar-nav div-right hidden-xs">
+                <ul class="nav navbar-nav">
+                    <li><a href="/admin"><span class=" glyphicon glyphicon-log-in"></span> 登录</a></li>
+                </ul>
+                 </div>
+
+               {% else %}
+
+                  <div class="nav navbar-nav div-right hidden-xs">
+                <ul class="nav navbar-nav">
+                    <li><a href="/admin/blog/article/add/"><span class="glyphicon glyphicon-pencil"></span> 发布</a></li>
+                </ul>
+                 </div>
+
+           {% endif %}
+
+
         <div class="container">
             <!-- 放入logo-->
            <!--  <a href="http://attacker.club" class="navbar-brand"><strong>Attacker.club</strong></a> -->
 
 
             <!-- 登陆&注册栏
-    <div class="navbar-right  hidden-xs">
-        <ul class="nav navbar-nav">
-            <a class="login btn btn-normal btn-primary" href="http://www.attacker.club/?/account/login/">登录</a>
-            <a class="register btn btn-normal btn-success" href="http://www.attacker.club/?/account/register/">注册</a>
-    </ul>
+{#    <div class="navbar-right  hidden-xs">#}
+{#        <ul class="nav navbar-nav">#}
+{#            <a class="login btn btn-normal btn-primary" href="http://www.attacker.club/?/account/login/">登录</a>#}
+{#            <a class="register btn btn-normal btn-success" href="http://www.attacker.club/?/account/register/">注册</a>#}
+{#    </ul>#}
 </div>-->
 
-{#            <div class="nav navbar-nav  navbar-right  hidden-xs">#}
+{#            <div class="nav navbar-nav  div-right  hidden-xs">#}
 {#                <ul class="nav navbar-nav">#}
-{#                    <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> 登录</a></li>#}
-{#                    <li><a href="#"><span class="glyphicon glyphicon-user"></span> 注册</a></li>#}
-{##}
+{#                    <a class="login btn btn-normal btn-primary " href="http://www.attacker.club/?/account/login/">登录</a>#}
 {#                </ul>#}
 {#            </div>#}
+
+
+
+{#            http://127.0.0.1:8000/admin/blog/article/add/#}
 
 
             <!--折叠 响应式导航栏 -->

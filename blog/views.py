@@ -52,18 +52,10 @@ def index(request):
     """
     article_list = Article.objects.order_by('-publish')[:5] #最近5篇文章
 
-
-    front_list = Article.objects.filter(category__name__contains="前端设计").order_by('-publish')[:5]
-    web_list = Article.objects.filter(category__name__contains="Web开发").order_by('-publish')[:5]
-    db_list = Article.objects.filter(category__name__contains="数据存储").order_by('-publish')[:5]
-
-    go_list = Article.objects.filter(category__name__contains="Go").order_by('-publish')[:5]
-    python_list = Article.objects.filter(category__name__contains="Python").order_by('-publish')[:5]
-
-    ops_list = Article.objects.filter(category__name__contains="Ops").order_by('-publish')[:5]
-    sec_list = Article.objects.filter(category__name__contains="安全").order_by('-publish')[:5]
-
     tag_all =  [tag for tag in Tag.objects.all()]
+
+    if request.user.is_authenticated:
+        user_login = True
 
     return render(request, 'index.html', locals())
 
