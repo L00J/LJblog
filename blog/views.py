@@ -10,6 +10,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger #分页
 import markdown
 
 from django.views.generic import ListView, DetailView
+from  django.utils.safestring import mark_safe
 
 
 from django.db.models import Q
@@ -33,7 +34,7 @@ def search(request):
                                               "tag_all": tag_all,
                                               "article_list": article_list, "key": key})
     else:
-        error_msg = "请登录后搜索"
+        error_msg = mark_safe("<br/><h4>请先登录...</h4>")
         return render(request, 'index.html', {'error_msg': error_msg})
 
     # article_list = Article.objects.filter(Q(title__icontains=key) | Q(body__icontains=key))
