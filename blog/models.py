@@ -73,8 +73,10 @@ class Article(models.Model):
         :param kwargs:
         :return:
         """
+        body = self.body
+
         # 从 body 摘取前 54 个字符赋给到 excerpt
-        self.digest = self.body[:80]
+        self.digest = body[:80]
         # 调用父类的 save 方法将数据保存到数据库中
         super(Article, self).save(*args, **kwargs)
 

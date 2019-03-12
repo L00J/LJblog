@@ -34,7 +34,12 @@ def search(request):
                                               "tag_all": tag_all,
                                               "article_list": article_list, "key": key})
     else:
-        error_msg = mark_safe("<br/><h4>请先登录...</h4>")
+        error_msg = mark_safe('''<div class="alert alert-info">
+				 <button type="button" class="close" data-dismiss="alert">×</button>
+				<h4>
+					提示!
+				</h4> <strong>搜索失败!</strong> 请先登录 ...
+			</div>''')
         return render(request, 'index.html', {'error_msg': error_msg})
 
     # article_list = Article.objects.filter(Q(title__icontains=key) | Q(body__icontains=key))

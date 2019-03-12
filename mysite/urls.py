@@ -21,13 +21,15 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.views.generic import TemplateView
 
+from django.shortcuts import HttpResponse
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('comments.urls')),
     #path('blog/', include('blog.urls')，), #博客
     path('', include('blog.urls',namespace='blog')), #默认首页
     path('mdeditor/',include('mdeditor.urls')),
-    re_path(r'^robots\.txt$', TemplateView.as_view(template_name='robots.txt', content_type='text/plain')),
+    # re_path(r'^robots\.txt$', lambda r: HttpResponse('User-agent: *\nDisallow: /admin', content_type='text/plain')),
 
 ]
 

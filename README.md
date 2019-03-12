@@ -1,8 +1,13 @@
 ##  LJblog - 个人博客
 
 
-### 安装环境
-django2.0 + bootstrap3.3.7 + markdown
+### 环境
+![Python](https://img.shields.io/badge/python-3.7.0-blue.svg?style=plastic)
+![django](https://img.shields.io/badge/django-2.1.7-blue.svg?style=plastic)
+![bootstrap](https://img.shields.io/badge/bootstrap-3.3.7-brightgreen.svg?style=plastic)
+![markdown](https://img.shields.io/badge/markdown-3.0.1-brightgreen.svg?style=plastic)
+![django-mdeditor](https://img.shields.io/badge/mdeditor-0.1.13-brightgreen.svg?style=plastic)
+
 
 
 
@@ -48,3 +53,6 @@ python manage.py loaddata  dump_blog.json
 ![后台](doc/article2.jpg)
 
 
+
+### demo:
+[https://attacker.club/](https://attacker.club/ "https://attacker.club/")

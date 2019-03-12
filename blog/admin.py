@@ -6,7 +6,7 @@ from .models import Article,Category,Tag
 
 
 
-# 博客文章
+# 列表
 class Articleslist(admin.ModelAdmin):
 
     def get_queryset(self, request):
@@ -47,7 +47,7 @@ class Categoryslist(admin.ModelAdmin):
 
 
 
-# 文章分类排序
+# 分类排序
 from django.utils.text import capfirst
 
 def find_model_index(name):
