@@ -27,17 +27,12 @@ urlpatterns = [
     #re_path(r'^(?P<pk>[0-9]+)/$', views.detail, name='detail'),
     #re_path(r'^(?P<question_id>[0-9]+)/results/$', views.results, name='results'),
 
-    re_path(r'^detail/(?P<pk>\d+)/$', views.detail, name='detail'),
+    # re_path(r'^detail/(?P<pk>\d+)/$', views.detail, name='detail'),
     re_path(r'^detail/(?P<pk>\d+).html$', views.detail, name='detail'),
     #re_path(r'^archive/$', views.archive, name='archive'),
     re_path(r'^articles/$', views.archive, name='articles'),
     #re_path(r'^archive/(?P<year>[0-9]{4})/(?P<month>[0-9]{1,2})/$', views.archive, name='archive'),
     path('archive/<int:year>/<int:month>/', views.archive, name='archive'),  # http://127.0.0.1:8000/archive/2019/1/
- #   re_path(r'^categorys/(?P<pk>\d+)$', views.categorys, name='categorys'),   # http://127.0.0.1:8000/category.html
- #   re_path(r'^tag/(?P<pk>\d+)/$', views.TagView.as_view(), name='tag'),
- #    re_path(r'^category/(?P<pk>\d+)$',views.CategoryView.as_view(), name='category'),
-
- #    re_path(r'^tag/(?P<name>.*?)/$', views.tag, name='tag'),
 
 
 

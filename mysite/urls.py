@@ -26,7 +26,6 @@ from django.shortcuts import HttpResponse
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('comments.urls')),
-    #path('blog/', include('blog.urls')，), #博客
     path('', include('blog.urls',namespace='blog')), #默认首页
     path('mdeditor/',include('mdeditor.urls')),
     # re_path(r'^robots\.txt$', lambda r: HttpResponse('User-agent: *\nDisallow: /admin', content_type='text/plain')),

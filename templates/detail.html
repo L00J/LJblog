@@ -73,11 +73,11 @@
 
                             <!--标签-->
                             <div class="cloud bg-color animation-div">
-                                <h4 class="index-title"><i class="el-tags"></i>标签云
-                                    <small>Tags Clouds</small>
+                                <h4 class="index-title"><i class="el-tags"></i>标签
+                                    <small>Tags</small>
                                 </h4>
                                 <ul id="3dcloud">
-                                    {% for tag in tag_all %}
+                                    {% for tag in detail_tag %}
 
 
                                         <li><a href="{% url "blog:tag" %}{{ tag }}" title="标签：{{ tag }} ">{{ tag }}</a></li>
@@ -86,6 +86,14 @@
                                     {% endfor %}
                                 </ul>
                             </div>
+
+                        <hr/>
+                        <h4> 扫码加入运维圈</h4>
+{#                        <p> <font size="3" color="#FF0000">5501770161</font>  </p>#}
+
+                        <img src="/media/home_page/qq.png" style="width:50%">
+                        <br/>
+                        <br/>
 
 
                     </div>

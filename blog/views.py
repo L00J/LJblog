@@ -19,10 +19,17 @@ from comments.forms import CommentForm
 
 
 def search(request):
+
+
+    if request.user.is_authenticated:
+        user_login = True
+
     key = request.GET.get('key')
     error_msg = ''
 
     tag_all = [tag for tag in Tag.objects.all()]
+
+
 
     if not key:
         error_msg = "请输入关键词"
@@ -32,6 +39,7 @@ def search(request):
         article_list = Article.objects.filter(title__icontains=key)
         return render(request, 'index.html', {'error_msg': error_msg,
                                               "tag_all": tag_all,
+                                              "user_login" : user_login,
                                               "article_list": article_list, "key": key})
     else:
         error_msg = mark_safe('''<div class="alert alert-info">
@@ -92,7 +100,8 @@ def detail(request, pk):
     article.body = md.convert(article.body.replace("\r\n",'  \n'))
     toc = md.toc
 
-    tag_all = [tag for tag in Tag.objects.all()]
+
+    detail_tag = Article.objects.get(pk=pk).tags.all()
 
     if request.user.is_authenticated:
         user_login = True
@@ -111,9 +120,6 @@ def detail(request, pk):
     return render(request, 'detail.html',context )
 
 
-
-
-
     # context = {'article':article}
     # return  render(request,'detail.html',context)
 
@@ -122,17 +128,6 @@ def detail(request, pk):
     #                                  'markdown.extensions.codehilite',
     #                                  'markdown.extensions.toc',
     #                               ],safe_mode=True,enable_attributes=False)
-
-
-
-
-# def archive(request):
-#     """
-#     文章归档
-#     """
-#     article_list = Article.objects.order_by('-publish')
-#     return render(request, 'archive.html', {"article_list": article_list})
-#
 
 
 
@@ -218,13 +213,14 @@ def tag(request, name):
 def category(request, pk):
     # 记得在开始部分导入 Category 类
 
+    if request.user.is_authenticated:
+        user_login = True
+
     tag_all = [tag for tag in Tag.objects.all()]
 
     cate = get_object_or_404(Category, pk=pk)
     article_list = Article.objects.filter(category=cate).order_by('-publish')
-    return render(request, 'index.html', context={'article_list': article_list,
-                                                  "tag_all":tag_all,
-                                                  })
+    return render(request, 'index.html', context=locals())
 
 
 
