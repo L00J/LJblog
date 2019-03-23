@@ -37,9 +37,9 @@ urlpatterns = [
     re_path(r'^tag/$', views.TagView.as_view(), name='tag'),
     re_path(r'^category/$', views.CategoryView.as_view(), name='category'),
     re_path(r'^archive/$', views.ArchiveView.as_view(), name='archive'),
-    # re_path(r'^search/$', views.search, name='search'),
+    re_path(r'^search/$', views.search, name='search'),
 
-    re_path(r'^search', include('haystack.urls')),
+    # re_path(r'^search', include('haystack.urls')),
 
     re_path(r'^tag/(?P<name>.*?)/$', views.tag, name='tag'),
     re_path(r'^category/(?P<pk>\d+)/$', views.category, name='category'),
