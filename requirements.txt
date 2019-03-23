@@ -1,7 +1,12 @@
 Django==2.1.5
 django-appconf==1.0.2
+django-haystack==2.8.1
 django-mdeditor==0.1.13
-Markdown==2.6.11
+future==0.17.1
+jieba==0.39
+Markdown==3.0.1
 Pillow==5.4.1
 Pygments==2.3.1
+python-ptrace==0.9.3
 pytz==2018.5
+Whoosh==2.7.4
