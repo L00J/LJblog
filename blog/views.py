@@ -3,24 +3,28 @@ from django.shortcuts import render
 # Create your views here.
 from django.shortcuts import render, get_object_or_404
 
-from blog.models import Article,Category,Tag
+from blog.models import Article, Category, Tag
 
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger #分页
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger  # 分页
 
 import markdown
 
 from django.views.generic import ListView, DetailView
-from  django.utils.safestring import mark_safe
-
+from django.utils.safestring import mark_safe
 
 from django.db.models import Q
 
 from comments.forms import CommentForm
 
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+# 分页模块
+
+
+from django.core.paginator import Paginator
+from django.views import View
+
 
 def search(request):
-
-
     if request.user.is_authenticated:
         user_login = True
 
@@ -29,17 +33,15 @@ def search(request):
 
     tag_all = [tag for tag in Tag.objects.all()]
 
-
-
     if not key:
         error_msg = "请输入关键词"
         return render(request, 'index.html', {'error_msg': error_msg})
 
-    elif request.user.is_authenticated: #判断是否登录
+    elif request.user.is_authenticated:  # 判断是否登录
         article_list = Article.objects.filter(title__icontains=key)
         return render(request, 'index.html', {'error_msg': error_msg,
                                               "tag_all": tag_all,
-                                              "user_login" : user_login,
+                                              "user_login": user_login,
                                               "article_list": article_list, "key": key})
     else:
         error_msg = mark_safe('''<div class="alert alert-info">
@@ -54,24 +56,46 @@ def search(request):
     # 全文搜索
 
 
-
-
-
-def index(request):
-
+class IndexView(View):
     """
-    博客首页
-    :param request:
-    :return:
+    cbv 基于类视图
     """
-    article_list = Article.objects.order_by('-publish')[:5] #最近5篇文章
+    def get(self, request):
 
-    tag_all =  [tag for tag in Tag.objects.all()]
+        post_all = Article.objects.all()  # 博客所有
+        page = Paginator(post_all, 5)  # 将文章数分页(2)
 
-    if request.user.is_authenticated:
-        user_login = True
+        page_num = page.num_pages  # 分页数总数
+        page_range = page.page_range  # 页码的列表数目
 
-    return render(request, 'index.html', locals())
+        page_first = page.page(1)  # 第1页的page对象
+        # page_first_list = page_first.object_list  # 首页展示文章条数
+
+        pageRange = range(1, 6)  # 显示分页按钮数量
+        page_count = page.count  # 总数据量
+
+        try:
+            # GET请求方式，get()获取指定Key值所对应的value值
+            # 获取page的值，url内输入的?page = 页码数  显示你输入的页面数目 默认为第1页
+            num = request.GET.get('page', 1)
+            # 获取第几页
+            number = page.page(1)
+        except PageNotAnInteger:
+            # 如果输入的页码数不是整数，那么显示第一页数据
+            number = page.page(1)
+        except EmptyPage:
+            number = page.page(page.num_pages)
+
+        currentPage = page.page(num)  # 当前页面
+
+        article_list = currentPage.object_list
+
+        tag_all = [tag for tag in Tag.objects.all()]  # tags
+
+        if request.user.is_authenticated:  # 登录
+            user_login = True
+
+        return render(request, 'index.html', locals())
 
 
 
@@ -97,16 +121,13 @@ def detail(request, pk):
     # 获取这篇 post 下的全部评论
     comment_list = article.comment_set.all()
 
-    article.body = md.convert(article.body.replace("\r\n",'  \n'))
+    article.body = md.convert(article.body.replace("\r\n", '  \n'))
     toc = md.toc
-
 
     detail_tag = Article.objects.get(pk=pk).tags.all()
 
     if request.user.is_authenticated:
         user_login = True
-
-
 
     # context = {"article": article,
     #            'form': form,
@@ -117,8 +138,7 @@ def detail(request, pk):
     #            'toc': md.toc }
 
     context = locals()
-    return render(request, 'detail.html',context )
-
+    return render(request, 'detail.html', context)
 
     # context = {'article':article}
     # return  render(request,'detail.html',context)
@@ -128,9 +148,6 @@ def detail(request, pk):
     #                                  'markdown.extensions.codehilite',
     #                                  'markdown.extensions.toc',
     #                               ],safe_mode=True,enable_attributes=False)
-
-
-
 
 
 def articles(request, pk):
@@ -150,9 +167,8 @@ def articles(request, pk):
         article_list = Article.objects.all()  # 获取全部文章
         category = ''
     return render(request, 'articles.html', {"article_list": article_list,
-                                                  "category": category,
-                                                  })
-
+                                             "category": category,
+                                             })
 
 
 def archive(request, year, month):
@@ -163,22 +179,17 @@ def archive(request, year, month):
     :param month:
     :return:
     """
-    article_list = Article.objects.filter(publish__year=year,publish__month=month).order_by('-publish')
+    article_list = Article.objects.filter(publish__year=year, publish__month=month).order_by('-publish')
     return render(request, 'archive.html', context={"article_list": article_list})
 
 
-
-
-
-
-
-class TagView(ListView):
+class TagView(View):
     model = Tag
     context_object_name = 'tags'
     template_name = 'tags.html'
 
 
-class CategoryView(ListView):
+class CategoryView(View):
     model = Category
     context_object_name = 'categories'
     template_name = 'category.html'
@@ -200,14 +211,8 @@ def tag(request, name):
     tag_all = [tag for tag in Tag.objects.all()]
     article_list = Article.objects.filter(tags__name=name)
     return render(request, 'index.html', {"article_list": article_list,
-                                              "tag_all": tag_all
-                                              })
-
-
-
-
-
-
+                                          "tag_all": tag_all
+                                          })
 
 
 def category(request, pk):
@@ -219,9 +224,33 @@ def category(request, pk):
     tag_all = [tag for tag in Tag.objects.all()]
 
     cate = get_object_or_404(Category, pk=pk)
-    article_list = Article.objects.filter(category=cate).order_by('-publish')
-    return render(request, 'index.html', context=locals())
+    post_all = Article.objects.filter(category=cate).order_by('-publish')
 
 
+    page = Paginator(post_all, 10)  # 将文章数分页(2)
+
+    page_num = page.num_pages  # 分页数总数
+    page_range = page.page_range  # 页码的列表数目
+
+    page_first = page.page(1)  # 第1页的page对象
+    # page_first_list = page_first.object_list  # 首页展示文章条数
+
+    page_count = page.count  # 总数据量
+
+    try:
+        # GET请求方式，get()获取指定Key值所对应的value值
+        # 获取page的值，url内输入的?page = 页码数  显示你输入的页面数目 默认为第1页
+        num = request.GET.get('page', 1)
+        # 获取第几页
+        number = page.page(1)
+    except PageNotAnInteger:
+        # 如果输入的页码数不是整数，那么显示第一页数据
+        number = page.page(1)
+    except EmptyPage:
+        number = page.page(page.num_pages)
 
 
+    currentPage = page.page(1)  # 当前页面
+    article_list = currentPage.object_list
+
+    return render(request, 'category.html', context=locals())

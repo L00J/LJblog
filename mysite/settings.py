@@ -40,7 +40,25 @@ INSTALLED_APPS = [
     'blog',
     'mdeditor',
     'comments', # 注册新创建的 comments 应用
+    'haystack',
 ]
+
+# 更改分词引擎
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        #使用whoosh引擎
+        'ENGINE': 'haystack.backends.whoosh_cn_backend.WhooshEngine',
+        #索引文件路径
+        'PATH': os.path.join(BASE_DIR, 'whoosh_index'),
+    }
+}
+
+HAYSTACK_SEARCH_RESULTS_PER_PAGE = 10 # 指定如何对搜索结果分页，这里设置为每 10 项结果为一页
+
+# 当添加、修改、删除数据时，自动生成索引；博客文章更新不会太频繁实时更新没有问题
+HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
+
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

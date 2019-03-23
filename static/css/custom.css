@@ -5,6 +5,8 @@ body {
 }
 
 
+
+
 /*字体左右浮动*/
 .div-left{ float:left; solid #F00}
 .div-right{ float:right; color: red; }

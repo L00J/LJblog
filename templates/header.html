@@ -3,27 +3,27 @@
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <!--navbar-inverse 黑色背景导航栏,navbar-fixed-top 导航栏固定到顶部 -->
 
-           {%  if not user_login %}
-                  <div class="nav navbar-nav div-right hidden-xs">
+        {% if not user_login %}
+            <div class="nav navbar-nav div-right hidden-xs">
                 <ul class="nav navbar-nav">
                     <li><a href="/admin"><span class=" glyphicon glyphicon-log-in"></span> 登录</a></li>
                 </ul>
-                 </div>
+            </div>
 
-               {% else %}
+        {% else %}
 
-                  <div class="nav navbar-nav div-right hidden-xs">
+            <div class="nav navbar-nav div-right hidden-xs">
                 <ul class="nav navbar-nav">
                     <li><a href="/admin/blog/article/add/"><span class="glyphicon glyphicon-pencil"></span> 发布</a></li>
                 </ul>
-                 </div>
+            </div>
 
-           {% endif %}
+        {% endif %}
 
 
         <div class="container">
             <!-- 放入logo-->
-           <!--  <a href="http://attacker.club" class="navbar-brand"><strong>Attacker.club</strong></a> -->
+            <!--  <a href="http://attacker.club" class="navbar-brand"><strong>Attacker.club</strong></a> -->
 
 
             <!-- 登陆&注册栏
@@ -34,15 +34,14 @@
 {#    </ul>#}
 </div>-->
 
-{#            <div class="nav navbar-nav  div-right  hidden-xs">#}
-{#                <ul class="nav navbar-nav">#}
-{#                    <a class="login btn btn-normal btn-primary " href="http://www.attacker.club/?/account/login/">登录</a>#}
-{#                </ul>#}
-{#            </div>#}
+            {#            <div class="nav navbar-nav  div-right  hidden-xs">#}
+            {#                <ul class="nav navbar-nav">#}
+            {#                    <a class="login btn btn-normal btn-primary " href="http://www.attacker.club/?/account/login/">登录</a>#}
+            {#                </ul>#}
+            {#            </div>#}
 
 
-
-{#            http://127.0.0.1:8000/admin/blog/article/add/#}
+            {#            http://127.0.0.1:8000/admin/blog/article/add/#}
 
 
             <!--折叠 响应式导航栏 -->
@@ -63,21 +62,20 @@
                     <li class="ative"><a href="/"> 主页 </a></li>
 
 
+                    <li><a href="{% url "blog:category" %}3"> Python </a></li>
 
-                    <li><a href="{% url "blog:category"%}3"> Python </a> </li>
+                    <li><a href="{% url "blog:category" %}1">前端设计 </a></li>
 
-                    <li><a href="{% url "blog:category"%}1">前端设计 </a> </li>
+                    <li><a href="{% url "blog:category" %}2"> Web开发 </a></li>
 
-                    <li><a href="{% url "blog:category"%}2"> Web开发 </a> </li>
+                    <li><a href="{% url "blog:category" %}4"> 安全攻防 </a></li>
 
-                    <li><a href="{% url "blog:category"%}4"> 安全攻防 </a></li>
+                    {#                    <li><a href="{% url "blog:category"%}4"> 数据库 </a> </li>#}
 
-{#                    <li><a href="{% url "blog:category"%}4"> 数据库 </a> </li>#}
+                    <li><a href="{% url "blog:category" %}15"> 数据应用 </a></li>
 
-                    <li><a href="{% url "blog:category"%}15"> 数据应用 </a> </li>
-
-{#                    <li><a href="#"> 智能家居 </a> </li>#}
-{#                    <li><a href="#"> 博彩娱乐 </a> </li>#}
+                    {#                    <li><a href="#"> 智能家居 </a> </li>#}
+                    {#                    <li><a href="#"> 博彩娱乐 </a> </li>#}
 
                     <li><a href="{% url "blog:archive" %}"> 时间归档 </a></li>
 
@@ -85,11 +83,12 @@
 
 
                 <!-- 添加搜索表单 -->
-                <form action="{% url 'blog:search' %}"  method="get"  class="navbar-form  pull-right  ">
+                {#                <form action="{% url 'blog:search' %}"  method="get"  class="navbar-form  pull-right  ">#}
+                <form action="{% url 'blog:haystack_search' %}" method="get" class="navbar-form  pull-right  ">
 
-                    <input type="search"  name='key' placeholder="搜索 ..." class="form-control ">
+                    <input type="search" name='key' placeholder="搜索 ..." class="form-control ">
 
-                    <button type="submit" >
+                    <button type="submit">
                         <span class="glyphicon glyphicon-search "></span>
 
                         <!-- form-control 可以额外添加样式
@@ -98,7 +97,6 @@
                         https://getbootstrap.com/docs/3.3/components/-->
                     </button>
                 </form>
-
 
 
             </div>
