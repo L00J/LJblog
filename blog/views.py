@@ -71,7 +71,7 @@ class IndexView(View):
         page_first = page.page(1)  # 第1页的page对象
         # page_first_list = page_first.object_list  # 首页展示文章条数
 
-        pageRange = range(1, 6)  # 显示分页按钮数量
+
         page_count = page.count  # 总数据量
 
         try:
@@ -86,7 +86,22 @@ class IndexView(View):
         except EmptyPage:
             number = page.page(page.num_pages)
 
+        start = int(num)  # 当前页面数
+
+        if page_num   > 5: # 总分页数大于5
+            if start +5 > page_num:  # 你输入的值
+                pageRange = range(start-5, start)
+
+            else:
+                pageRange = range(start, start+5)  # 显示分页按钮数量
+
+        else:
+            pageRange = page.page_range # 正常分配range(1, 4)
+
+
         currentPage = page.page(num)  # 当前页面
+
+
 
         article_list = currentPage.object_list
 
@@ -227,7 +242,7 @@ def category(request, pk):
     post_all = Article.objects.filter(category=cate).order_by('-publish')
 
 
-    page = Paginator(post_all, 10)  # 将文章数分页(2)
+    page = Paginator(post_all, 9)  # 将文章数分页(2)
 
     page_num = page.num_pages  # 分页数总数
     page_range = page.page_range  # 页码的列表数目
@@ -249,8 +264,20 @@ def category(request, pk):
     except EmptyPage:
         number = page.page(page.num_pages)
 
+    start = int(num)  # 当前页面数
 
-    currentPage = page.page(1)  # 当前页面
+    if page_num > 5:  # 总分页数大于5
+        if start + 5 > page_num:  # 你输入的值
+            pageRange = range(start - 5, start)
+
+        else:
+            pageRange = range(start, start + 5)  # 显示分页按钮数量
+
+    else:
+        pageRange = page.page_range  # 正常分配range(1, 4)
+
+
+    currentPage = page.page(num)  # 当前页面
     article_list = currentPage.object_list
 
     return render(request, 'category.html', context=locals())
