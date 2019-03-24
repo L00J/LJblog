@@ -12,9 +12,11 @@
 from django.urls import path, re_path, include
 # re_path方法相当于 django1.11 url正则表达式
 from . import views
+from . import custom_search
 
 # 载入视图模块
 
+from haystack.views import SearchView
 
 app_name = 'blog'
 # 设置应用命名空间
@@ -37,9 +39,16 @@ urlpatterns = [
     re_path(r'^tag/$', views.TagView.as_view(), name='tag'),
     re_path(r'^category/$', views.CategoryView.as_view(), name='category'),
     re_path(r'^archive/$', views.ArchiveView.as_view(), name='archive'),
-    re_path(r'^search/$', views.search, name='search'),
+    # re_path(r'^search/$', views.search, name='search'),
 
-    # re_path(r'^search', include('haystack.urls')),
+    # path(r'search/', include('haystack.urls'),name='search'),
+    # re_path(r'search/', , name='haystack_search'),
+
+    # re_path(r'^search/',views.MySearchView, name='haystack_search'),
+
+    # re_path('^search/', views.MySearchView.as_view(), name='haystack_search'),
+
+    re_path('^search/', custom_search.MySearchIndex(), name='haystack_search'),
 
     re_path(r'^tag/(?P<name>.*?)/$', views.tag, name='tag'),
     re_path(r'^category/(?P<pk>\d+)/$', views.category, name='category'),

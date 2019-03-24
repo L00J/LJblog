@@ -84,9 +84,10 @@
 
                 <!-- 添加搜索表单 -->
                 {#                <form action="{% url 'blog:search' %}"  method="get"  class="navbar-form  pull-right  ">#}
-                <form action="{% url 'blog:search' %}" method="get" class="navbar-form  pull-right  ">
+                <form action="{% url 'blog:haystack_search' %}" method="get" class="navbar-form  pull-right  ">
 
-                    <input type="search" name='key' placeholder="搜索 ... "  class="form-control ">
+                    {#                    <input type="search" name='key' placeholder="搜索 ... "  class="form-control ">#}
+                    <input type="search" name='q' placeholder="搜索 ... " class="form-control ">
 
                     <button type="submit">
                         <span class="glyphicon glyphicon-search "></span>
@@ -97,6 +98,11 @@
                         https://getbootstrap.com/docs/3.3/components/-->
                     </button>
                 </form>
+
+{#                <form role="search" method="get" id="searchform" action="{% url 'blog:haystack_search' %}">#}
+{#                    <input type="search" name="q" placeholder="搜索" required>#}
+{#                    <button type="submit"><span class="ion-ios-search-strong"></span></button>#}
+{#                </form>#}
 
 
             </div>

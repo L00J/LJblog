@@ -1,27 +1,58 @@
-from django.shortcuts import render
-
 # Create your views here.
 from django.shortcuts import render, get_object_or_404
-
 from blog.models import Article, Category, Tag
 
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger  # 分页
 
 import markdown
-
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView #DetailView
 from django.utils.safestring import mark_safe
 
-from django.db.models import Q
 
 from comments.forms import CommentForm
-
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 # 分页模块
 
 
-from django.core.paginator import Paginator
 from django.views import View
+
+
+
+from datetime import date
+from haystack.generic_views import SearchView
+class MySearchView(SearchView):
+    """My custom search view."""
+
+    # def get_queryset(self):
+    #     queryset = super(MySearchView, self).get_queryset()
+    #     # further filter queryset based on some set of criteria
+    #     return queryset.filter(pub_date__gte=date(2015, 1, 1))
+
+    def get_context_data(self, *args, **kwargs):
+        context = super(MySearchView, self).get_context_data(*args, **kwargs)
+
+        tag_all = [tag for tag in Tag.objects.all()]
+
+        # do something
+
+        context = locals()
+        return context
+
+
+# # from haystack.views import SearchView
+# class MySeachView(SearchView):
+#
+#
+#     def extra_context(self):       #重载extra_context来添加额外的context内容
+#         context = super(MySeachView,self).extra_context()
+#
+#         tag_all = [tag for tag in Tag.objects.all()]  # tags
+#
+#         context = locals()
+#         return context
+
+
+
+
 
 
 def search(request):
