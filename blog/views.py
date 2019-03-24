@@ -90,7 +90,7 @@ class IndexView(View):
 
         if page_num   > 5: # 总分页数大于5
             if start +5 > page_num:  # 你输入的值
-                pageRange = range(start-5, start)
+                pageRange = range(start-4, start+1) # 大于展示按钮数量时
 
             else:
                 pageRange = range(start, start+5)  # 显示分页按钮数量
@@ -100,6 +100,8 @@ class IndexView(View):
 
 
         currentPage = page.page(num)  # 当前页面
+
+        currentRange = currentPage.number+1 # #显示末尾
 
 
 
