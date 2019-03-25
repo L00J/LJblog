@@ -15,13 +15,41 @@
 ### 初始化环境
 ```
 cd LJblog
-python3 -m venv env_django (或: virtualenv -p `which  python3` env_django)
-source  env_django/bin/activate
-#载入py环境
+echo env_django >> .gitignore # 排除env环境上传至git
+python3 -m venv env_django (或: virtualenv -p `which  python2.7` env_django) 
+# 创建env
+source  env_django/bin/activate #载入py环境
 
 pip  install -i http://mirrors.aliyun.com/pypi/simple  --trusted-host mirrors.aliyun.com  -r requirements.txt
 #安装pip包(阿里源)
 
+```
+### DB数据库配置
+```
+sqlite3:
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
+}
+mysql:
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'blog',
+        'USER':'root',
+        'PASSWORD':'',
+        'HOST':'localhost',
+        'PORT':'3306',
+    }
+}
+
+```
+### 初始化数据并并启动
+```
 python manage.py makemigrations 
 #为改动models创建迁移记录
 python manage.py migrate 
@@ -34,13 +62,24 @@ python manage.py runserver
 ```
 
 ### 维护调试
+**django shell**
+```
+from blog.models import Article,Category,Tag 
+
+Article.objects.all()
+# 文章
+[tag for tag in Tag.objects.all()]
+# Tags
+```
+
 **数据导入和导出**
 ```
-python manage.py dumpdata >  dump_blog.json 
+python manage.py dumpdata >  dump_.json 
 #导出文章内容
-python manage.py loaddata  dump_blog.json
+python manage.py loaddata  dump_.json
 #导入内容
 ```
+
 
 
 ### 效果预览

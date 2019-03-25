@@ -37,6 +37,7 @@ def download_code():
 
 def app ():
     run("pip3 install -i http://mirrors.aliyun.com/pypi/simple   --trusted-host mirrors.aliyun.com  -r  requirements.txt")
+    run("python3 manage.py rebuild_index")
     run("python3 manage.py collectstatic --noinput &&python3 manage.py migrate")
     run('''sed -i "/ALLOWED_HOSTS/c ALLOWED_HOSTS= \['127.0.0.1','.attacker.club'\]" mysite/settings.py ''' )
     run("sed -i 's#/data/LJblog#/www/django/blog#' mysite/settings.py")
