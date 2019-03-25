@@ -26,16 +26,15 @@ pip  install -i http://mirrors.aliyun.com/pypi/simple  --trusted-host mirrors.al
 ```
 ### DB数据库配置
 ```
-sqlite3:
-
+# sqlite3:
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-mysql:
 
+# mysql:
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
