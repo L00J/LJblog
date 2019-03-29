@@ -132,7 +132,7 @@ class IndexView(View):
 
         currentPage = page.page(num)  # 当前页面
 
-        currentRange = currentPage.number+1 # #显示末尾
+        currentRange = currentPage.number+1 # 显示末尾
 
 
 
@@ -186,7 +186,7 @@ def detail(request, pk):
     #            'toc': md.toc }
 
     context = locals()
-    return render(request, 'detail.html', context)
+    return render(request, 'blog/detail.html', context)
 
     # context = {'article':article}
     # return  render(request,'detail.html',context)
@@ -214,7 +214,7 @@ def articles(request, pk):
         # pk为0时表示全部
         article_list = Article.objects.all()  # 获取全部文章
         category = ''
-    return render(request, 'articles.html', {"article_list": article_list,
+    return render(request, 'blog/articles.html', {"article_list": article_list,
                                              "category": category,
                                              })
 
@@ -228,25 +228,25 @@ def archive(request, year, month):
     :return:
     """
     article_list = Article.objects.filter(publish__year=year, publish__month=month).order_by('-publish')
-    return render(request, 'archive.html', context={"article_list": article_list})
+    return render(request, 'blog/archive.html', context={"article_list": article_list})
 
 
 class TagView(View):
     model = Tag
     context_object_name = 'tags'
-    template_name = 'tags.html'
+    template_name = 'blog/tags.html'
 
 
 class CategoryView(View):
     model = Category
     context_object_name = 'categories'
-    template_name = 'category.html'
+    template_name = 'blog/category.html'
 
 
 class ArchiveView(ListView):
     model = Article
     context_object_name = 'article_list'
-    template_name = 'archive.html'
+    template_name = 'blog/archive.html'
 
 
 def tag(request, name):
@@ -313,4 +313,4 @@ def category(request, pk):
     currentPage = page.page(num)  # 当前页面
     article_list = currentPage.object_list
 
-    return render(request, 'category.html', context=locals())
+    return render(request, 'blog/category.html', context=locals())

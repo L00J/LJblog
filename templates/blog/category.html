@@ -88,7 +88,8 @@
 
                             {% if currentPage.has_previous %}
                                 <li>
-                                    <a href="{% url "blog:category" cate.pk %}?page={{ currentPage.previous_page_number }} "  aria-label="Previous">
+                                    <a href="{% url "blog:category" cate.pk %}?page={{ currentPage.previous_page_number }} "
+                                       aria-label="Previous">
                                         <span aria-hidden="true">上一页</span>
                                     </a>
                                 </li>
@@ -99,31 +100,38 @@
 
                             {% for page_line  in  pageRange %}
 
-                                <li>
-                                    <a href="{% url "blog:category" cate.pk %}?page={{ page_line }} ">{{ page_line }} </a>
-                                </li>
+                                {% if currentPage.number == page_line %}
+                                    <li class="active"><a href="{% url "blog:category" cate.pk %}?page={{ page_line }} ">{{ page_line }} </a>
+                                    </li>
+                                {% else %}
+                                    <li><a href="{% url "blog:category" cate.pk %}?page={{ page_line }} ">{{ page_line }} </a>
+                                    </li>
+                                {% endif %}
+
+                                {#                                <li>#}
+                                {#                                    <a href="{% url "blog:category" cate.pk %}?page={{ page_line }} ">{{ page_line }} </a>#}
+                                {#                                </li>#}
 
                             {% endfor %}
 
 
 
 
-                          {% if currentPage.has_next %}
+                            {% if currentPage.has_next and currentPage.number > pageRange %}
                                 <li>
                                     <a href="{% url "blog:category" cate.pk %}?page={{ currentPage.next_page_number }} "
                                        aria-label="Next">
                                         <span aria-hidden="true">下一页</span>
                                     </a>
                                 </li>
-                            {% else %}
-                                <li>
-                                    <a href="{% url "blog:category" cate.pk %}?page={{ page_num }} " aria-label="Next">
-                                        <span aria-hidden="true">末尾</span>
-                                    </a>
-                                </li>
+                                {#                            {% else %}#}
+                                {#                                <li>#}
+                                {#                                    <a href="{% url "blog:category" cate.pk %}?page={{ page_num }} " aria-label="Next">#}
+                                {#                                        <span aria-hidden="true">末尾</span>#}
+                                {#                                    </a>#}
+                                {#                                </li>#}
 
                             {% endif %}
-
 
 
                         </ul>
@@ -145,7 +153,7 @@
 
 
     <!--=========右侧开始==========-->
-    {% include "right.html" %}
+    {% include "blog/right.html" %}
     <!--=========END右侧==========-->
 
 {% endblock %}

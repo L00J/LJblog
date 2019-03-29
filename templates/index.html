@@ -98,33 +98,42 @@
                                 </li>
                             {% endif %}
 
-                            {% if currentPage.number > 2 %}
-                                <li>
-                                    <a href="{% url "blog:index" %}?page=1" aria-label="Home">
-                                        <span aria-hidden="true">1</span>
-                                    </a>
-                                </li>
-                            {% endif %}
+                                                        {% if currentPage.number > 2 %}
+                                                            <li>
+                                                                <a href="{% url "blog:index" %}?page=1" aria-label="Home">
+                                                                    <span aria-hidden="true">1</span>
+                                                                </a>
+                                                            </li>
+                                                        {% endif %}
 
-                            {#                          {% if currentPage.number > 3 %}#}
-                            {#                                <li>#}
-                            {#                                    <a href="{% url "blog:index" %}?page={{ page_num }}" aria-label="Home">#}
-                            {#                                        <span aria-hidden="true">1</span>#}
-                            {#                                    </a>#}
-                            {#                                </li>#}
-                            {#                            {% endif %}#}
+{#                                                      {% if currentPage.number > 3 %}#}
+{#                                                            <li>#}
+{#                                                                <a href="{% url "blog:index" %}?page={{ page_num }}" aria-label="Home">#}
+{#                                                                    <span aria-hidden="true">1</span>#}
+{#                                                                </a>#}
+{#                                                            </li>#}
+{#                                                        {% endif %}#}
 
 
 
                             {% for page_line  in  pageRange %}
-                                <li><a href="{% url "blog:index" %}?page={{ page_line }} ">{{ page_line }} </a></li>
+                                {% if currentPage.number == page_line %}
+                                    <li class="active"><a
+                                            href="{% url "blog:index" %}?page={{ page_line }} ">{{ page_line }} </a>
+                                    </li>
+                                {% else %}
+                                    <li><a href="{% url "blog:index" %}?page={{ page_line }} ">{{ page_line }} </a></li>
+                                {% endif %}
+
                             {% endfor %}
 
                             {#                                                        <li>...</li>#}
 
 
+                            {#                            {% if currentPage.has_next #}
+                            {% if currentPage.has_next%}
 
-                            {% if currentPage.has_next %}
+                                <li><a>... </a></li>
 
 
                                 {% if page_num > 6 and currentRange < page_num %}
@@ -142,12 +151,12 @@
                                         <span aria-hidden="true"> &raquo;</span>
                                     </a>
                                 </li>
-                            {% else %}
-                                <li>
-                                    <a href="{% url "blog:index" %}?page={{ page_num }} " aria-label="Next">
-                                        <span aria-hidden="true">末尾</span>
-                                    </a>
-                                </li>
+{#                            {% else %}#}
+{#                                <li>#}
+{#                                    <a href="{% url "blog:index" %}?page={{ page_num }} " aria-label="Next">#}
+{#                                        <span aria-hidden="true">末尾</span>#}
+{#                                    </a>#}
+{#                                </li>#}
                             {% endif %}
 
 
@@ -187,7 +196,7 @@
 
 
     <!--=========右侧开始==========-->
-    {% include "right.html" %}
+    {% include "blog/right.html" %}
     <!--=========END右侧==========-->
 
 {% endblock %}
