@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a54411f1-1262-491c-b9e7-2b59dcf51546" name="Default" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/whoosh_index/MAIN_u1sk6lygckdptrvy.seg" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/blog/views.py" afterPath="$PROJECT_DIR$/blog/views.py" />
       <change beforePath="$PROJECT_DIR$/templates/archive.html" afterPath="$PROJECT_DIR$/templates/blog/archive.html" />
@@ -12,7 +13,7 @@
       <change beforePath="$PROJECT_DIR$/templates/login.html" afterPath="$PROJECT_DIR$/templates/blog/login.html" />
       <change beforePath="$PROJECT_DIR$/templates/right.html" afterPath="$PROJECT_DIR$/templates/blog/right.html" />
       <change beforePath="$PROJECT_DIR$/templates/tags.html" afterPath="$PROJECT_DIR$/templates/blog/tags.html" />
-      <change beforePath="$PROJECT_DIR$/whoosh_index/_MAIN_14.toc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/whoosh_index/_MAIN_14.toc" afterPath="$PROJECT_DIR$/whoosh_index/_MAIN_15.toc" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
