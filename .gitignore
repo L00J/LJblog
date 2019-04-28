@@ -3,4 +3,5 @@
 .DS_Store
 __pycache__
 db.sqlite3
+whoosh_index
 env_django
