@@ -101,15 +101,8 @@ class IndexView(View):
         topic_all = Topic.objects.all() # 专题
         for t in topic_all:
             k = [i.pk for i in Post.objects.filter(topic=t.pk)[:1]]
-            topic_indexes[k[0]] = t.name
-
-
-
-        # Parts_index = []
-        # for topic in topic_all:
-        #     part_pk =  [ [i.id,i.topic]  for i in  Post.objects.filter(topic__pk=topic.pk)][:1]
-        #     Parts_index.append(part_pk)
-
+            if len(k) >0:
+                topic_indexes[k[0]] = t.name
 
 
         page = Paginator(post_all, 5)  # 将文章数分页(2)
