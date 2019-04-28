@@ -31,7 +31,11 @@
                             <div class="title-article">
                                 <h4 class="blue-text text-center"><a href="{% url "blog:detail" pk=article.id %}"
                                                                      title="{{ article.title }}">{{ article.title }}</a>
+
+                                     <li   class="btn btn-success btn-xs  ">{{ article.get_status_display }}</li>
                                 </h4>
+
+
 
                                 <div class="content-article text-center">
                                     <div class="alert alert-zan">     {{ article.digest }} ...</div>
@@ -66,9 +70,8 @@
                                             href="{% url "blog:category" article.category.pk %} " title="分类"><i
                                             class="el-th-list"></i>{{ article.category }}</a></li>
 
-                                    {#                                    {% endfor %}#}
-
                                 </ul>
+
                             </div>
 
                         </section>

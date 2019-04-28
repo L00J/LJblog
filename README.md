@@ -64,11 +64,23 @@ python manage.py runserver
 **django shell**
 ```
 from blog.models import Article,Category,Tag 
+# 文章
+from topic.models import *
+# 专题
 
 Article.objects.all()
 # 文章
 [tag for tag in Tag.objects.all()]
 # Tags
+
+
+topic_indexes = {}
+topic_all = Topic.objects.all()
+for t in topic_all:
+     k =  [ i.pk  for i in Post.objects.filter(topic=t.pk)[:1]]
+     topic_indexes[k[0]] = t.name
+     topic_indexes.items()
+
 ```
 
 **数据导入和导出**

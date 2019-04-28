@@ -1,6 +1,7 @@
 # Create your views here.
 from django.shortcuts import render, get_object_or_404
 from blog.models import Article, Category, Tag
+from  topic.models import  *
 
 
 import markdown
@@ -93,7 +94,24 @@ class IndexView(View):
     """
     def get(self, request):
 
-        post_all = Article.objects.all()  # 博客所有
+        post_all = Article.objects.order_by('-status')# 博客所有
+
+
+        topic_indexes = {}
+        topic_all = Topic.objects.all() # 专题
+        for t in topic_all:
+            k = [i.pk for i in Post.objects.filter(topic=t.pk)[:1]]
+            topic_indexes[k[0]] = t.name
+
+
+
+        # Parts_index = []
+        # for topic in topic_all:
+        #     part_pk =  [ [i.id,i.topic]  for i in  Post.objects.filter(topic__pk=topic.pk)][:1]
+        #     Parts_index.append(part_pk)
+
+
+
         page = Paginator(post_all, 5)  # 将文章数分页(2)
 
         page_num = page.num_pages  # 分页数总数
@@ -152,25 +170,35 @@ def detail(request, pk):
     """
     博文详情
     """
-    article = get_object_or_404(Article, pk=pk)
+    topic_indexes = {}
+    topic_all = Topic.objects.all()  # 专题
+    for t in topic_all:
+        k = [i.pk for i in Post.objects.filter(topic=t.pk)[:1]]
+        topic_indexes[k[0]] = t.name
+
+
     ua = request.META.get('HTTP_USER_AGENT')
     ipaddr = request.META['REMOTE_ADDR']
 
-    article.viewed()  # 阅读量统计
 
+
+    article = get_object_or_404(Article, pk=pk)
+    article.viewed()  # 阅读量统计
     md = markdown.Markdown(extensions=[
         'markdown.extensions.extra',
         'markdown.extensions.codehilite',
         'markdown.extensions.toc',
     ])
+    article.body = md.convert(article.body.replace("\r\n", '  \n'))
+    toc = md.toc
+
 
     # 记得在顶部导入 CommentForm
     form = CommentForm()
     # 获取这篇 post 下的全部评论
     comment_list = article.comment_set.all()
 
-    article.body = md.convert(article.body.replace("\r\n", '  \n'))
-    toc = md.toc
+
 
     detail_tag = Article.objects.get(pk=pk).tags.all()
 
@@ -265,6 +293,13 @@ def tag(request, name):
 
 def category(request, pk):
     # 记得在开始部分导入 Category 类
+
+    topic_indexes = {}
+    topic_all = Topic.objects.all()  # 专题
+    for t in topic_all:
+        k = [i.pk for i in Post.objects.filter(topic=t.pk)[:1]]
+        topic_indexes[k[0]] = t.name
+
 
     if request.user.is_authenticated:
         user_login = True

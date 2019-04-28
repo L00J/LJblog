@@ -31,7 +31,7 @@ class Articleslist(admin.ModelAdmin):
     date_hierarchy = 'mod_date' #按时间分类
 
     #exclude = ('view','comment','publish') # 排除字段
-    fields = (('title','category'),'body','tags',('picture','publish'))  # 指定文章发布选项
+    fields = (('title','category'),'body',('tags','status'),('picture','publish'))  # 指定文章发布选项
 
     # 重写ModelAdmin模块的save_model方法
     def save_model(self, request, obj, form, change):

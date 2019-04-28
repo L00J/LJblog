@@ -72,12 +72,32 @@
 
                     {#                    <li><a href="{% url "blog:category"%}4"> 数据库 </a> </li>#}
 
-                    <li><a href="{% url "blog:category" %}15"> 数据应用 </a></li>
+{#                    <li><a href="{% url "blog:category" %}15"> 数据应用 </a></li>#}
 
                     {#                    <li><a href="#"> 智能家居 </a> </li>#}
                     {#                    <li><a href="#"> 博彩娱乐 </a> </li>#}
 
-                    <li><a href="{% url "blog:archive" %}"> 时间归档 </a></li>
+                    {#                    <li><a href="{% url "blog:archive" %}"> 时间归档 </a></li>#}
+
+
+                    
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">专题 <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+
+
+                            {% for k,v in topic_indexes.items %}
+
+                                <li><a href="{% url "topic:part" k %}"> {{ v }} </a></li>
+
+                            {% endfor %}
+
+
+
+                        </ul>
+                    </li>
+
 
                 </ul>
 
@@ -99,10 +119,10 @@
                     </button>
                 </form>
 
-{#                <form role="search" method="get" id="searchform" action="{% url 'blog:haystack_search' %}">#}
-{#                    <input type="search" name="q" placeholder="搜索" required>#}
-{#                    <button type="submit"><span class="ion-ios-search-strong"></span></button>#}
-{#                </form>#}
+                {#                <form role="search" method="get" id="searchform" action="{% url 'blog:haystack_search' %}">#}
+                {#                    <input type="search" name="q" placeholder="搜索" required>#}
+                {#                    <button type="submit"><span class="ion-ios-search-strong"></span></button>#}
+                {#                </form>#}
 
 
             </div>

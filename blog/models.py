@@ -29,23 +29,32 @@ class Article(models.Model):
     文章的数据库表稍微复杂一点，主要是涉及的字段更多。
     django会自动新建自增id作为主键
     """
+
+    status_choice = (
+        (0, '原'),
+        (1, '转'),
+        (2, '顶'),
+    )
+
+
+
+
     title = models.CharField(verbose_name='标题',max_length=70) # 标题
     body = MDTextField(verbose_name='正文',blank=True, null=True)
     #body = models.TextField(verbose_name='正文',blank=True, null=True)  # 文章正文
     digest = models.TextField(blank=True, null=True)  # 文章摘要
-
-
+    status = models.SmallIntegerField(choices=status_choice, default=0, verbose_name='类型')
     publish = models.DateTimeField(verbose_name='发布时间',default=timezone.now) #发布时间
     mod_date = models.DateField(verbose_name='更新时间',auto_now=True) #更新时间
 
-    category = models.ForeignKey(Category,verbose_name='分类', on_delete=models.CASCADE) #分类
+    category = models.ForeignKey(Category,verbose_name='分类', on_delete=models.CASCADE)
+    #分类
     tags = models.ManyToManyField(Tag,verbose_name='标签', blank=True) #标签
-   
+
     view = models.BigIntegerField(verbose_name='阅读数',default=0)  # 阅读数
     # comment = models.BigIntegerField(verbose_name='评论数',default=0)  # 评论数
-    author = models.CharField(default='anonymous',verbose_name='作者', max_length=128, editable=False)
-
-    picture = models.CharField(verbose_name='图片地址',max_length=200,blank=True,null=True)# 图片地址
+    author = models.CharField(default='anonymous', verbose_name='作者', editable=False, max_length=128)
+    picture = models.CharField(verbose_name='图片地址',max_length=200,blank=True,null=True) # 图片地址
 
     def __str__(self):
         return self.title

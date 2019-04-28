@@ -1,0 +1,809 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+{#<div class="container-fluid main">#}
+
+    <div class="row">
+
+        <!-- 左侧目录栏 -->
+        <div class="col-md-3">
+            <div class="navbar-sider list-group-item">
+                目&nbsp;录
+                <hr>
+
+
+                <a href="/course/python/1" class="list-group-item active"><b>Python教程</b></a>
+
+
+                <a style="margin-left: 2em" href="/course/python/3"
+                   class="list-group-item"><strong>Python简介</strong></a>
+
+
+                <a style="margin-left: 2em" href="/course/python/4" class="list-group-item"><strong>Python环境搭建</strong></a>
+
+
+                <a style="margin-left: 4em" href="/course/python/5" class="list-group-item">pip的安装和使用</a>
+
+
+                <a style="margin-left: 4em" href="/course/python/6" class="list-group-item">virtualenv 虚拟环境</a>
+
+
+                <a style="margin-left: 4em" href="/course/python/7" class="list-group-item">代码编辑器</a>
+
+
+                <a style="margin-left: 4em" href="/course/python/8" class="list-group-item">帮助文档</a>
+
+
+                <a style="margin-left: 2em" href="/course/python/9" class="list-group-item"><strong>编译器与解释器</strong></a>
+
+
+                <a style="margin-left: 2em" href="/course/python/10" class="list-group-item"><strong>“Hello
+                    World！”</strong></a>
+
+
+                <a style="margin-left: 2em" href="/course/python/11" class="list-group-item"><strong>基础知识</strong></a>
+
+
+                <a style="margin-left: 4em" href="/course/python/12" class="list-group-item">基础语法</a>
+
+
+                <a style="margin-left: 4em" href="/course/python/13" class="list-group-item">变量与常量</a>
+
+
+                <a style="margin-left: 4em" href="/course/python/14" class="list-group-item">运算符</a>
+
+
+                <a style="margin-left: 4em" href="/course/python/15" class="list-group-item">输入输出</a>
+
+
+                <a style="margin-left: 2em" href="/course/python/16" class="list-group-item"><strong>数据类型</strong></a>
+
+
+                <a style="margin-left: 4em" href="/course/python/17" class="list-group-item">数字类型</a>
+
+
+                <a style="margin-left: 4em" href="/course/python/18" class="list-group-item">布尔类型</a>
+
+
+                <a style="margin-left: 4em" href="/course/python/19" class="list-group-item">列表</a>
+
+
+                <a style="margin-left: 4em" href="/course/python/20" class="list-group-item">元组</a>
+
+
+                <a style="margin-left: 4em" href="/course/python/21" class="list-group-item">字符串</a>
+
+
+                <a style="margin-left: 4em" href="/course/python/22" class="list-group-item">字典</a>
+
+
+                <a style="margin-left: 4em" href="/course/python/23" class="list-group-item">bytes</a>
+
+
+                <a style="margin-left: 4em" href="/course/python/24" class="list-group-item">集合set</a>
+
+
+                <a style="margin-left: 2em" href="/course/python/25" class="list-group-item"><strong>流程控制</strong></a>
+
+
+                <a style="margin-left: 4em" href="/course/python/26" class="list-group-item">顺序执行</a>
+
+
+                <a style="margin-left: 4em" href="/course/python/27" class="list-group-item">条件判断</a>
+
+
+                <a style="margin-left: 4em" href="/course/python/28" class="list-group-item">循环控制</a>
+
+
+                <a style="margin-left: 2em" href="/course/python/29" class="list-group-item"><strong>函数</strong></a>
+
+
+                <a style="margin-left: 4em" href="/course/python/30" class="list-group-item">函数基础</a>
+
+
+                <a style="margin-left: 4em" href="/course/python/31" class="list-group-item">参数类型</a>
+
+
+                <a style="margin-left: 4em" href="/course/python/32" class="list-group-item">变量作用域</a>
+
+
+                <a style="margin-left: 4em" href="/course/python/33" class="list-group-item">range()函数</a>
+
+
+                <a style="margin-left: 4em" href="/course/python/34" class="list-group-item">递归函数</a>
+
+
+                <a style="margin-left: 4em" href="/course/python/35" class="list-group-item">匿名函数</a>
+
+
+                <a style="margin-left: 4em" href="/course/python/36" class="list-group-item">推导式</a>
+
+
+                <a style="margin-left: 4em" href="/course/python/37" class="list-group-item">迭代器</a>
+
+
+                <a style="margin-left: 4em" href="/course/python/38" class="list-group-item">生成器</a>
+
+
+                <a style="margin-left: 4em" href="/course/python/39" class="list-group-item">装饰器</a>
+
+
+                <a style="margin-left: 2em" href="/course/python/40" class="list-group-item"><strong>内置函数</strong></a>
+
+
+                <a style="margin-left: 2em" href="/course/python/41" class="list-group-item"><strong>文件读写</strong></a>
+
+
+                <a style="margin-left: 2em" href="/course/python/42" class="list-group-item"><strong>面向对象编程</strong></a>
+
+
+                <a style="margin-left: 4em" href="/course/python/43" class="list-group-item">类和实例</a>
+
+
+                <a style="margin-left: 4em" href="/course/python/44" class="list-group-item">封装、继承和多态</a>
+
+
+                <a style="margin-left: 4em" href="/course/python/45" class="list-group-item">成员保护和访问限制</a>
+
+
+                <a style="margin-left: 4em" href="/course/python/46" class="list-group-item">@property装饰器</a>
+
+
+                <a style="margin-left: 4em" href="/course/python/47" class="list-group-item">特殊成员和魔法方法</a>
+
+
+                <a style="margin-left: 4em" href="/course/python/48" class="list-group-item">reflect反射</a>
+
+
+                <a style="margin-left: 2em" href="/course/python/49" class="list-group-item"><strong>异常处理</strong></a>
+
+
+                <a style="margin-left: 2em" href="/course/python/50" class="list-group-item"><strong>调试和测试</strong></a>
+
+
+                <a style="margin-left: 2em" href="/course/python/51" class="list-group-item"><strong>模块与包</strong></a>
+
+
+                <a style="margin-left: 2em" href="/course/python/52" class="list-group-item"><strong>常用标准库</strong></a>
+
+
+                <a style="margin-left: 4em" href="/course/python/53" class="list-group-item">os</a>
+
+
+                <a style="margin-left: 4em" href="/course/python/54" class="list-group-item">sys</a>
+
+
+                <a style="margin-left: 4em" href="/course/python/55" class="list-group-item">subprocess</a>
+
+
+                <a style="margin-left: 4em" href="/course/python/56" class="list-group-item">random</a>
+
+
+                <a style="margin-left: 4em" href="/course/python/57" class="list-group-item">bisect</a>
+
+
+                <a style="margin-left: 4em" href="/course/python/58" class="list-group-item">hashlib</a>
+
+
+                <a style="margin-left: 4em" href="/course/python/59" class="list-group-item">queue</a>
+
+
+                <a style="margin-left: 4em" href="/course/python/60" class="list-group-item">fileinput</a>
+
+
+                <a style="margin-left: 4em" href="/course/python/61" class="list-group-item">shutil</a>
+
+
+                <a style="margin-left: 4em" href="/course/python/62" class="list-group-item">zipfile</a>
+
+
+                <a style="margin-left: 4em" href="/course/python/63" class="list-group-item">tarfile</a>
+
+
+                <a style="margin-left: 4em" href="/course/python/64" class="list-group-item">getpass</a>
+
+
+                <a style="margin-left: 4em" href="/course/python/65" class="list-group-item">json</a>
+
+
+                <a style="margin-left: 4em" href="/course/python/66" class="list-group-item">pickle</a>
+
+
+                <a style="margin-left: 4em" href="/course/python/67" class="list-group-item">shelve</a>
+
+
+                <a style="margin-left: 4em" href="/course/python/68" class="list-group-item">time</a>
+
+
+                <a style="margin-left: 4em" href="/course/python/69" class="list-group-item">datetime</a>
+
+
+                <a style="margin-left: 4em" href="/course/python/70" class="list-group-item">timeit</a>
+
+
+                <a style="margin-left: 4em" href="/course/python/71" class="list-group-item">logging</a>
+
+
+                <a style="margin-left: 2em" href="/course/python/72" class="list-group-item"><strong>正则表达式</strong></a>
+
+
+                <a style="margin-left: 4em" href="/course/python/73" class="list-group-item">正则表达式语法</a>
+
+
+                <a style="margin-left: 4em" href="/course/python/74" class="list-group-item">re模块</a>
+
+
+                <a style="margin-left: 2em" href="/course/python/75" class="list-group-item"><strong>网络编程</strong></a>
+
+
+                <a style="margin-left: 4em" href="/course/python/76" class="list-group-item">socket编程</a>
+
+
+                <a style="margin-left: 4em" href="/course/python/77" class="list-group-item">socketserver编程</a>
+
+
+                <a style="margin-left: 2em" href="/course/python/78"
+                   class="list-group-item"><strong>多线程与多进程</strong></a>
+
+
+                <a style="margin-left: 4em" href="/course/python/79" class="list-group-item">多线程threading</a>
+
+
+                <a style="margin-left: 4em" href="/course/python/80" class="list-group-item">生产者消费者模式</a>
+
+
+                <a style="margin-left: 4em" href="/course/python/81" class="list-group-item">线程池</a>
+
+
+                <a style="margin-left: 4em" href="/course/python/82" class="list-group-item">多进程multiprocess</a>
+
+
+                <a style="margin-left: 2em" href="/course/python/83"
+                   class="list-group-item"><strong>协程与异步IO</strong></a>
+
+
+            </div>
+        </div>
+        <!-- 左侧目录栏 结束 -->
+
+        <!-- 右侧正文栏 -->
+        <div class="col-md-9">
+            <!-- 教程正文主体部分 -->
+            <div class="row">
+                <h1>Python教程</h1>
+                <p>阅读:&nbsp;111489</p>
+                <hr>
+                <h2 id="django2222">Django教程已经全面升级为2.2版本！两个实战项目的2.2版本视频教程<a href="http://www.liujiangblog.com/video/">点此查看</a>。技术分享不易，快速更新更是耗费精力，还请大家多支持，谢谢！
+                </h2>
+                <hr>
+                <h2 id="19python">19年最新Python数据分析视频教程：<a href="http://www.liujiangblog.com/video/">点此查看</a></h2>
+                <hr>
+                <h2 id="django2">博主倾心录制的Django2全栈视频教程：<a href="http://www.liujiangblog.com/video/">点此查看</a></h2>
+                <hr>
+                <h2 id="_1">版权声明：禁止转载和抄袭本网站的所有博客和教程！博主保留一切权利！</h2>
+                <hr>
+                <h3 id="pythonpython">
+                    Python是当前非常热门、应用范围非常广、使用人员非常多的编程语言。每年都有很多的初学者开始接触并爱上Python语言。作为一门开源的编程语言，其学习教程、技术书籍有很多，各有各的优缺点。</h3>
+                <h3 id="basicccjavapythongopythonpythonpython">
+                    博主系科班计算机系研究生毕业，前前后后接触和学习过BASIC、C、C++、JAVA、Python、GO等多门语言，对编程语言有一定的了解。在这么多的语言中，最喜爱的还是Python，花费的功夫也最多。长期的学习和使用Python过程中，总结了一些自己的经验和心得，独乐乐不如众乐乐，在此以Python教程的形式分享给大家，希望大家喜欢。当然，限于能力和经验，难免会有不到之处，恳请大家批评指正！</h3>
+                <h3 id="pythonwebpython-djangowebdjangopythonwebdjangoapi">
+                    Python是一门强大的语言，可用于Web开发、自动化运维、科学计算、网络爬虫、数据分析、机器学习、深度学习等几乎所有主流应用方向。尤其是Python +
+                    Django的Web开发组合，更是开发大型新闻网站、博客系统、自动化运维平台的最佳选择。博主在Django这个基于Python的最成熟、最庞大的Web框架上进行了比较深入的研究。在此基础上，耗费了大量的时间和精力，以教程的形式，系统、全面、准确地将Django的方方面面介绍给大家。这是一本‘从入门到精通’的教程，既有简单易懂的入门指南和实战项目，又有可以作为参考书目，常用常翻的API大全，希望大家能够喜欢并有所收获。</h3>
+            </div>
+            <!-- 教程正文主体部分结束 -->
+
+            <hr>
+
+
+            <!-- 打赏部分开始 -->
+
+
+            <!-- 打赏部分结束 -->
+
+
+            <!-- 教程导航条 -->
+            <div class="row">
+
+                <a class="pull-left" href="#"><i class="glyphicon glyphicon-chevron-left"></i>前面没有了....</a>
+
+
+                <a class="pull-right" href="/course/python/3">
+                    Python简介<i class="glyphicon glyphicon-chevron-right"></i></a>
+
+            </div>
+            <!-- 教程导航条结束 -->
+
+
+            <hr>
+
+            <!-- 评论区-->
+
+
+            <!-- 显示评论条数-->
+            <div class="row">
+
+                <h3>评论总数： 16</h3>
+                <hr>
+            </div>
+
+            <!-- 评论表单区-->
+            <div class="row">
+
+
+                <a href="https://api.weibo.com/oauth2/authorize?client_id=3191049160&amp;response_type=code&amp;redirect_uri=http://www.liujiangblog.com/login?next=/course/python/1">登录后方可评论</a>
+
+            </div>
+            <!-- 评论表单区结束-->
+
+            <hr>
+
+            <!-- 评论显示区-->
+            <div class="row">
+
+                <div class="single_comments" style="margin-left: 0em">
+                    <div>
+                        <img src="http://tva2.sinaimg.cn/crop.0.0.180.180.50/939cc2b2jw1e8qgp5bmzyj2050050aa8.jpg"
+                             alt="user_image" style="width:50px; height:50px; border-radius:50%; overflow:hidden;"
+                             class="img-responsive">
+                    </div>
+                    <div class="col-md-11 comment-content" style="margin-bottom: 10px;">
+
+
+                        <p>好教程，刘总</p>
+                        <br>
+                        <div class="entry-meta small muted">
+
+                                            <span>By&nbsp;&nbsp;
+
+                                                    hello地主家的傻儿子
+
+                                            </span>&nbsp;&nbsp;&nbsp;On&nbsp;&nbsp;
+
+                            <em>2018年12月30日 13:05</em>
+                            <a href="/reply/988">&nbsp;&nbsp;回复</a>
+                        </div>
+                        <br>
+
+                    </div>
+                </div>
+
+                <div class="single_comments" style="margin-left: 0em">
+                    <div>
+                        <img src="http://tvax2.sinaimg.cn/crop.0.0.996.996.50/90fbcd90ly8fiqxvpbuzjj20ro0rojuf.jpg"
+                             alt="user_image" style="width:50px; height:50px; border-radius:50%; overflow:hidden;"
+                             class="img-responsive">
+                    </div>
+                    <div class="col-md-11 comment-content" style="margin-bottom: 10px;">
+
+
+                        <p>真的是一个好教程</p>
+                        <br>
+                        <div class="entry-meta small muted">
+
+                                            <span>By&nbsp;&nbsp;
+
+                                                    虎啸云飘舞
+
+                                            </span>&nbsp;&nbsp;&nbsp;On&nbsp;&nbsp;
+
+                            <em>2018年11月15日 20:55</em>
+                            <a href="/reply/867">&nbsp;&nbsp;回复</a>
+                        </div>
+                        <br>
+
+                    </div>
+                </div>
+
+                <div class="single_comments" style="margin-left: 0em">
+                    <div>
+                        <img src="http://tva1.sinaimg.cn/crop.0.0.720.720.50/9f999f0bjw8eowha2szmmj20k00k0tbi.jpg"
+                             alt="user_image" style="width:50px; height:50px; border-radius:50%; overflow:hidden;"
+                             class="img-responsive">
+                    </div>
+                    <div class="col-md-11 comment-content" style="margin-bottom: 10px;">
+
+
+                        <p>写技术博文和长篇教程不是件容易的事，江哥真的太用心了，而且质量也很精品，对小白和初级选手太友好了。</p>
+                        <br>
+                        <div class="entry-meta small muted">
+
+                                            <span>By&nbsp;&nbsp;
+
+                                                    turbobin_
+
+                                            </span>&nbsp;&nbsp;&nbsp;On&nbsp;&nbsp;
+
+                            <em>2018年11月14日 21:53</em>
+                            <a href="/reply/861">&nbsp;&nbsp;回复</a>
+                        </div>
+                        <br>
+
+                    </div>
+                </div>
+
+                <div class="single_comments" style="margin-left: 0em">
+                    <div>
+                        <img src="http://tva3.sinaimg.cn/crop.0.2.199.199.50/710799e2jw1ekl0l3wl88j205k05m3yu.jpg"
+                             alt="user_image" style="width:50px; height:50px; border-radius:50%; overflow:hidden;"
+                             class="img-responsive">
+                    </div>
+                    <div class="col-md-11 comment-content" style="margin-bottom: 10px;">
+
+
+                        <p>博主写的很好，给我们这些小白省了很多时间找各种资料，希望能经常更新！</p>
+                        <br>
+                        <div class="entry-meta small muted">
+
+                                            <span>By&nbsp;&nbsp;
+
+                                                    疯狂搞技术
+
+                                            </span>&nbsp;&nbsp;&nbsp;On&nbsp;&nbsp;
+
+                            <em>2018年10月2日 08:01</em>
+                            <a href="/reply/757">&nbsp;&nbsp;回复</a>
+                        </div>
+                        <br>
+
+                    </div>
+                </div>
+
+                <div class="single_comments" style="margin-left: 0em">
+                    <div>
+                        <img src="http://tvax4.sinaimg.cn/crop.0.0.960.960.50/006xIWURly8fo9wxo24vzj30qo0qoaaz.jpg"
+                             alt="user_image" style="width:50px; height:50px; border-radius:50%; overflow:hidden;"
+                             class="img-responsive">
+                    </div>
+                    <div class="col-md-11 comment-content" style="margin-bottom: 10px;">
+
+
+                        <p>每次写评论最讨厌写标题，不可以直接写内容吗？搞不懂博主为什么非要加个评论标题？！难道大家不觉得别扭吗？</p>
+                        <br>
+                        <div class="entry-meta small muted">
+
+                                            <span>By&nbsp;&nbsp;
+
+                                                    蔷薇-Nina
+
+                                            </span>&nbsp;&nbsp;&nbsp;On&nbsp;&nbsp;
+
+                            <em>2018年3月3日 23:24</em>
+                            <a href="/reply/237">&nbsp;&nbsp;回复</a>
+                        </div>
+                        <br>
+
+                    </div>
+                </div>
+
+                <div class="single_comments" style="margin-left: 4em">
+                    <div>
+                        <img src="http://tvax1.sinaimg.cn/crop.0.0.960.960.50/6dbce8e9ly8fpwjg0jjzoj20qo0qo0u7.jpg"
+                             alt="user_image" style="width:50px; height:50px; border-radius:50%; overflow:hidden;"
+                             class="img-responsive">
+                    </div>
+                    <div class="col-md-11 comment-content" style="margin-bottom: 10px;">
+
+
+                        <p>评论标题比评论内容还大，看着怪怪的，希望博主该一下咯</p>
+                        <br>
+                        <div class="entry-meta small muted">
+
+                                            <span>
+
+                                                    健诚是我
+
+                                                <span class="glyphicon glyphicon-share-alt"></span>
+
+
+                                                    蔷薇-Nina
+
+                                            </span>
+
+                            <em>2018年11月8日 10:35</em>
+                            <a href="/reply/838">&nbsp;&nbsp;回复</a>
+                        </div>
+                        <br>
+
+                    </div>
+                </div>
+
+                <div class="single_comments" style="margin-left: 4em">
+                    <div>
+                        <img src="http://tvax1.sinaimg.cn/crop.0.0.960.960.50/6dbce8e9ly8fpwjg0jjzoj20qo0qo0u7.jpg"
+                             alt="user_image" style="width:50px; height:50px; border-radius:50%; overflow:hidden;"
+                             class="img-responsive">
+                    </div>
+                    <div class="col-md-11 comment-content" style="margin-bottom: 10px;">
+
+
+                        <p>评论标题比评论内容还大，看着怪怪的，希望博主该一下咯</p>
+                        <br>
+                        <div class="entry-meta small muted">
+
+                                            <span>
+
+                                                    健诚是我
+
+                                                <span class="glyphicon glyphicon-share-alt"></span>
+
+
+                                                    蔷薇-Nina
+
+                                            </span>
+
+                            <em>2018年11月8日 10:35</em>
+                            <a href="/reply/839">&nbsp;&nbsp;回复</a>
+                        </div>
+                        <br>
+
+                    </div>
+                </div>
+
+                <div class="single_comments" style="margin-left: 0em">
+                    <div>
+                        <img src="http://tva2.sinaimg.cn/crop.0.0.80.80.50/0061qcDQjw8ep6v23tnyzj3028028q2p.jpg"
+                             alt="user_image" style="width:50px; height:50px; border-radius:50%; overflow:hidden;"
+                             class="img-responsive">
+                    </div>
+                    <div class="col-md-11 comment-content" style="margin-bottom: 10px;">
+
+
+                        <p>博主的python 视频不错，希望以后出点django视频。</p>
+                        <br>
+                        <div class="entry-meta small muted">
+
+                                            <span>By&nbsp;&nbsp;
+
+                                                    潇潇乐5517818454
+
+                                            </span>&nbsp;&nbsp;&nbsp;On&nbsp;&nbsp;
+
+                            <em>2018年1月7日 15:08</em>
+                            <a href="/reply/110">&nbsp;&nbsp;回复</a>
+                        </div>
+                        <br>
+
+                    </div>
+                </div>
+
+                <div class="single_comments" style="margin-left: 4em">
+                    <div>
+                        <img src="http://tvax1.sinaimg.cn/crop.79.178.566.566.50/005PMdg8ly8fjzip8l3ibj30k00scgr3.jpg"
+                             alt="user_image" style="width:50px; height:50px; border-radius:50%; overflow:hidden;"
+                             class="img-responsive">
+                    </div>
+                    <div class="col-md-11 comment-content" style="margin-bottom: 10px;">
+
+
+                        <p>很快就会出Django视频</p>
+                        <br>
+                        <div class="entry-meta small muted">
+
+                                            <span>
+
+                                                    大江东流奔腾不息<span class="label label-danger">&nbsp;博主</span>
+
+                                                <span class="glyphicon glyphicon-share-alt"></span>
+
+
+                                                    潇潇乐5517818454
+
+                                            </span>
+
+                            <em>2018年1月7日 18:28</em>
+                            <a href="/reply/111">&nbsp;&nbsp;回复</a>
+                        </div>
+                        <br>
+
+                    </div>
+                </div>
+
+                <div class="single_comments" style="margin-left: 0em">
+                    <div>
+                        <img src="http://tva2.sinaimg.cn/crop.0.1.640.640.50/4bc40d1bjw8eyml8ssfeaj20hs0hu3z8.jpg"
+                             alt="user_image" style="width:50px; height:50px; border-radius:50%; overflow:hidden;"
+                             class="img-responsive">
+                    </div>
+                    <div class="col-md-11 comment-content" style="margin-bottom: 10px;">
+
+
+                        <p>django ??我竟然今天是第一次听到这个东西。。。</p>
+                        <br>
+                        <div class="entry-meta small muted">
+
+                                            <span>By&nbsp;&nbsp;
+
+                                                    左手天才T
+
+                                            </span>&nbsp;&nbsp;&nbsp;On&nbsp;&nbsp;
+
+                            <em>2018年1月5日 16:20</em>
+                            <a href="/reply/109">&nbsp;&nbsp;回复</a>
+                        </div>
+                        <br>
+
+                    </div>
+                </div>
+
+                <div class="single_comments" style="margin-left: 0em">
+                    <div>
+                        <img src="http://tvax1.sinaimg.cn/crop.14.0.612.612.50/006OQn87ly8ffl7mbl9wvj30hs0h0gmc.jpg"
+                             alt="user_image" style="width:50px; height:50px; border-radius:50%; overflow:hidden;"
+                             class="img-responsive">
+                    </div>
+                    <div class="col-md-11 comment-content" style="margin-bottom: 10px;">
+
+
+                        <p>博主的网站也是用Django做的吧?</p>
+                        <br>
+                        <div class="entry-meta small muted">
+
+                                            <span>By&nbsp;&nbsp;
+
+                                                    Andy痛快活
+
+                                            </span>&nbsp;&nbsp;&nbsp;On&nbsp;&nbsp;
+
+                            <em>2017年12月15日 14:48</em>
+                            <a href="/reply/92">&nbsp;&nbsp;回复</a>
+                        </div>
+                        <br>
+
+                    </div>
+                </div>
+
+                <div class="single_comments" style="margin-left: 4em">
+                    <div>
+                        <img src="http://tvax1.sinaimg.cn/crop.79.178.566.566.50/005PMdg8ly8fjzip8l3ibj30k00scgr3.jpg"
+                             alt="user_image" style="width:50px; height:50px; border-radius:50%; overflow:hidden;"
+                             class="img-responsive">
+                    </div>
+                    <div class="col-md-11 comment-content" style="margin-bottom: 10px;">
+
+
+                        <p>肯定的啦</p>
+                        <br>
+                        <div class="entry-meta small muted">
+
+                                            <span>
+
+                                                    大江东流奔腾不息<span class="label label-danger">&nbsp;博主</span>
+
+                                                <span class="glyphicon glyphicon-share-alt"></span>
+
+
+                                                    Andy痛快活
+
+                                            </span>
+
+                            <em>2017年12月15日 15:00</em>
+                            <a href="/reply/93">&nbsp;&nbsp;回复</a>
+                        </div>
+                        <br>
+
+                    </div>
+                </div>
+
+                <div class="single_comments" style="margin-left: 0em">
+                    <div>
+                        <img src="http://tva3.sinaimg.cn/crop.0.0.180.180.50/8fbee390jw8fb1m9medxjj2050050745.jpg"
+                             alt="user_image" style="width:50px; height:50px; border-radius:50%; overflow:hidden;"
+                             class="img-responsive">
+                    </div>
+                    <div class="col-md-11 comment-content" style="margin-bottom: 10px;">
+
+
+                        <p>找了一圈，发现Django才是最棒的，谢谢分享！</p>
+                        <br>
+                        <div class="entry-meta small muted">
+
+                                            <span>By&nbsp;&nbsp;
+
+                                                    双鱼开阳
+
+                                            </span>&nbsp;&nbsp;&nbsp;On&nbsp;&nbsp;
+
+                            <em>2017年12月12日 09:44</em>
+                            <a href="/reply/83">&nbsp;&nbsp;回复</a>
+                        </div>
+                        <br>
+
+                    </div>
+                </div>
+
+                <div class="single_comments" style="margin-left: 0em">
+                    <div>
+                        <img src="http://tva1.sinaimg.cn/crop.0.0.640.640.50/54d91545jw8evsglj29dpj20hs0hs74z.jpg"
+                             alt="user_image" style="width:50px; height:50px; border-radius:50%; overflow:hidden;"
+                             class="img-responsive">
+                    </div>
+                    <div class="col-md-11 comment-content" style="margin-bottom: 10px;">
+
+
+                        <p>很期待django 以及后续。哈哈</p>
+                        <br>
+                        <div class="entry-meta small muted">
+
+                                            <span>By&nbsp;&nbsp;
+
+                                                    熙雯爸的幸福生活
+
+                                            </span>&nbsp;&nbsp;&nbsp;On&nbsp;&nbsp;
+
+                            <em>2017年10月22日 13:47</em>
+                            <a href="/reply/25">&nbsp;&nbsp;回复</a>
+                        </div>
+                        <br>
+
+                    </div>
+                </div>
+
+                <div class="single_comments" style="margin-left: 0em">
+                    <div>
+                        <img src="http://tva2.sinaimg.cn/crop.0.0.80.80.50/0061qcDQjw8ep6v23tnyzj3028028q2p.jpg"
+                             alt="user_image" style="width:50px; height:50px; border-radius:50%; overflow:hidden;"
+                             class="img-responsive">
+                    </div>
+                    <div class="col-md-11 comment-content" style="margin-bottom: 10px;">
+
+
+                        <p>这博客写的不错。希望以后更好。</p>
+                        <br>
+                        <div class="entry-meta small muted">
+
+                                            <span>By&nbsp;&nbsp;
+
+                                                    潇潇乐5517818454
+
+                                            </span>&nbsp;&nbsp;&nbsp;On&nbsp;&nbsp;
+
+                            <em>2017年10月13日 11:12</em>
+                            <a href="/reply/23">&nbsp;&nbsp;回复</a>
+                        </div>
+                        <br>
+
+                    </div>
+                </div>
+
+                <div class="single_comments" style="margin-left: 0em">
+                    <div>
+                        <img src="http://tvax1.sinaimg.cn/crop.79.178.566.566.50/005PMdg8ly8fjzip8l3ibj30k00scgr3.jpg"
+                             alt="user_image" style="width:50px; height:50px; border-radius:50%; overflow:hidden;"
+                             class="img-responsive">
+                    </div>
+                    <div class="col-md-11 comment-content" style="margin-bottom: 10px;">
+
+
+                        <p>欢迎大家访问我的博客和教程！</p>
+                        <br>
+                        <div class="entry-meta small muted">
+
+                                            <span>By&nbsp;&nbsp;
+
+                                                    大江东流奔腾不息<span class="label label-danger">&nbsp;博主</span>
+
+                                            </span>&nbsp;&nbsp;&nbsp;On&nbsp;&nbsp;
+
+                            <em>2017年9月28日 21:20</em>
+                            <a href="/reply/17">&nbsp;&nbsp;回复</a>
+                        </div>
+                        <br>
+
+                    </div>
+                </div>
+
+            </div>
+            <!-- 评论显示区结束-->
+
+            <!-- 评论区结束-->
+
+        </div>
+        <!-- 右侧正文栏结束 -->
+
+    </div>
+{#</div>#}
+
+
+{% endblock %}

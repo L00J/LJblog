@@ -1,0 +1,71 @@
+
+
+
+{% extends 'base.html' %}
+
+{% block content %}
+    {% for post in post_all %}
+
+
+
+
+
+
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span4">
+
+
+                    <div class="accordion" id="accordion-71295">
+
+
+                        <div class="accordion-group">
+                            <div class="accordion-heading">
+                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion-71295"
+                                   href="#accordion-element-{{ post.pk }}">
+
+                                    {{ post.title }}
+
+                                </a>
+                            </div>
+
+
+                            <div id="accordion-element-{{ post.pk }}" class="accordion-body collapse in">
+                                <div class="accordion-inner">
+
+
+                                    {{ post.title }}
+                                </div>
+
+
+                            </div>
+
+                        </div>
+
+                        {##}
+                        {#                <div class="accordion-group">#}
+                        {#                    <div class="accordion-heading">#}
+                        {#                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion-71295"#}
+                        {#                           href="#accordion-element-790620">选项卡 #2</a>#}
+                        {#                    </div>#}
+                        {#                    <div id="accordion-element-790620" class="accordion-body collapse">#}
+                        {#                        <div class="accordion-inner">#}
+                        {#                            功能块2...#}
+                        {#                        </div>#}
+                        {#                    </div>#}
+                        {#                </div>#}
+
+
+                    </div>
+
+
+                </div>
+                <div class="span8">
+                </div>
+            </div>
+        </div>
+
+
+    {% endfor %}
+
+{% endblock %}

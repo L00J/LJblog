@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'mdeditor',
     'comments', # 注册新创建的 comments 应用
     'haystack',
+    'topic',
 ]
 
 # 更改分词引擎
