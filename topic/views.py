@@ -18,7 +18,8 @@ def topic(request, pk):
     topic_all = Topic.objects.all()  # 专题
     for t in topic_all:
         k = [i.pk for i in Post.objects.filter(topic=t.pk)[:1]]
-        topic_indexes[k[0]] = t.name
+        if len(k) > 0:
+            topic_indexes[k[0]] = t.name
 
 
     # t = get_object_or_404(Topic, pk=pk) # part
