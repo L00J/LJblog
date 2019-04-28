@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 
-{% block title %}<title>{{ article.title }}  -以谁为师的博客</title> {% endblock %}
+{% block title %}<title>{{ article.title }} -以谁为师的博客</title> {% endblock %}
 
 
 {% block content %}
@@ -20,8 +20,9 @@
                         <p class="text-center">{{ article.publish.date }}&nbsp&sdot;
                             浏览量:&nbsp{{ article.view }}&nbsp&nbsp&nbsp
 
-                            {%  if user_login %}
-                                <a href="/admin/blog/article/{{ article.pk }}/change/"  class="glyphicon glyphicon-wrench" ></a>
+                            {% if user_login %}
+                                <a href="/admin/blog/article/{{ article.pk }}/change/"
+                                   class="glyphicon glyphicon-wrench"></a>
                             {% endif %}
                         </p>
 
@@ -30,7 +31,7 @@
                     </div>
 
 
-                     <!-- 右侧栏 -->
+                    <!-- 右侧栏 -->
                     <div class="side">
                         <br/><br/>
 
@@ -39,59 +40,58 @@
                                 目录
                             </h4>
 
-                               {{ toc|safe }}
-                                <hr/>
+                            {{ toc|safe }}
+                            <hr/>
 
 
                         {% endif %}
 
 
 
-{##}
-{##}
-{#                            <h4 > 运维圈大本营QQ群:</h4>#}
-{#                            <p> <font size="3" color="#FF0000">5501770161</font>  </p>#}
-{#                            <br>#}
-{##}
-{#                            <img src="/media/home_page/yw.jpg" style="width:80%" class="img-rounded center-block">#}
-{#                            <br/>#}
-{#                            <br/>#}
-{##}
-{##}
-{##}
-{#                            <h2>#}
-{#                                xxx#}
-{#                            </h2>#}
-{#                            <p>#}
-{#                                本可视化布局#}
-{#                            </p>#}
-{#                            <p>#}
-{#                                <a class="btn" href="#">github »</a> <a class="btn" href="#">xops.attacker.club »</a>#}
-{#                            </p>#}
+                        {##}
+                        {##}
+                        {#                            <h4 > 运维圈大本营QQ群:</h4>#}
+                        {#                            <p> <font size="3" color="#FF0000">5501770161</font>  </p>#}
+                        {#                            <br>#}
+                        {##}
+                        {#                            <img src="/media/home_page/yw.jpg" style="width:80%" class="img-rounded center-block">#}
+                        {#                            <br/>#}
+                        {#                            <br/>#}
+                        {##}
+                        {##}
+                        {##}
+                        {#                            <h2>#}
+                        {#                                xxx#}
+                        {#                            </h2>#}
+                        {#                            <p>#}
+                        {#                                本可视化布局#}
+                        {#                            </p>#}
+                        {#                            <p>#}
+                        {#                                <a class="btn" href="#">github »</a> <a class="btn" href="#">xops.attacker.club »</a>#}
+                        {#                            </p>#}
 
 
-
-                            <!--标签-->
-                            <div class="cloud bg-color animation-div">
-                                <h4 class="index-title"><i class="el-tags"></i>标签
-                                    <small>Tags</small>
-                                </h4>
-                                <ul id="3dcloud">
-                                    {% for tag in detail_tag %}
-
-
-                                        <li><a href="{% url "blog:tag" %}{{ tag }}" title="标签：{{ tag }} ">{{ tag }}</a></li>
+                        <!--标签-->
+                        <div class="cloud bg-color animation-div">
+                            <h4 class="index-title"><i class="el-tags"></i>标签
+                                <small>Tags</small>
+                            </h4>
+                            <ul id="3dcloud">
+                                {% for tag in detail_tag %}
 
 
-                                    {% endfor %}
-                                </ul>
-                            </div>
+                                    <li><a href="{% url "blog:tag" %}{{ tag }}" title="标签：{{ tag }} ">{{ tag }}</a></li>
+
+
+                                {% endfor %}
+                            </ul>
+                        </div>
 
                         <hr/>
-                        <h4> 扫码加入运维圈</h4>
-{#                        <p> <font size="3" color="#FF0000">5501770161</font>  </p>#}
+                        <h4>&nbsp&nbsp&nbsp&nbsp&nbsp扫码加入运维圈</h4>
 
-                        <img src="/media/home_page/qq.png" style="width:50%">
+
+                        <img src="/media/home_page/qq.png" style="width:60%">
                         <br/>
                         <br/>
 
@@ -100,8 +100,8 @@
 
 
                     <!-- 文尾声明 -->
-                    <div class="div-left alert-success " >
-                        <img src={% static 'img/pay.jpg' %} alt="微信打赏" />
+                    <div class="div-left alert-success ">
+                        <img src={% static 'img/pay.jpg' %} alt="微信打赏"/>
                         <p>作者： 以谁为师</p>
                         <p>最后更新： {{ article.mod_date }} </p>
                         <p> 原始链接： http://attacker.club{% url "blog:detail" pk=article.id %} </p>
@@ -111,9 +111,11 @@
 
                     <!-- 底部评论 -->
                     <div class="row">
-                        <div class="col-lg-8" >
-                            <hr/><br/>
-                            <form action="{% url 'comments:article_comment' article.pk %}" method="post" class="comment-form">
+                        <div class="col-lg-8">
+                            <hr/>
+                            <br/>
+                            <form action="{% url 'comments:article_comment' article.pk %}" method="post"
+                                  class="comment-form">
                                 {% csrf_token %}
                                 <div class="row">
                                     <div class="col-md-3">
@@ -135,9 +137,6 @@
                                     </div>
 
 
-
-
-
                                     <div class="col-md-12">
                                         {#                            <label for="{{ form.text.id_for_label }}">评论：</label>#}
                                         <br/>
@@ -151,7 +150,8 @@
 
                             <ul class="comment-list list-unstyled">
 
-                                <h3>留言区:</h3><hr/>
+                                <h3>留言区:</h3>
+                                <hr/>
 
 
                                 {% for comment in comment_list %}
@@ -165,8 +165,8 @@
 
                                         <time class="submit-date">&sdot;&nbsp{{ comment.created_time }}</time>
 
-                                             {% if comment.url %}
-                                            <a href= "{{ comment.url }}" target="_blank">
+                                        {% if comment.url %}
+                                            <a href="{{ comment.url }}" target="_blank">
                                                 <span class="glyphicon glyphicon-link ">网站</span>
                                             </a>
                                         {% endif %}
