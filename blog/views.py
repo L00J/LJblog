@@ -94,7 +94,7 @@ class IndexView(View):
     """
     def get(self, request):
 
-        post_all = Article.objects.order_by('-status')# 博客所有
+        post_all = Article.objects.order_by('-status','-publish')# 博客所有
 
 
         topic_indexes = {}
