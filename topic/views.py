@@ -33,7 +33,7 @@ def topic(request, pk):
     topic_index = Topic.objects.filter(post__pk=pk)
     topic_pk = [i for i in topic_index][0]
 
-    post_all = Post.objects.filter(topic=topic_pk).order_by('parent','level')
+    post_all = Post.objects.filter(topic=topic_pk).order_by('ctime','parent')
 
     md = markdown.Markdown(extensions=[
         'markdown.extensions.extra',
