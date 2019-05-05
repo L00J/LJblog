@@ -9,7 +9,7 @@ class Topiclist(admin.ModelAdmin):
     list_editable = ['name']  # 可编辑项
 
 class Postlist(admin.ModelAdmin):
-    list_display = ['id','title','topic','ctime']  # 分类
+    list_display = ['title','topic','ctime']  # 分类
     # list_editable = ['title']  # 可编辑项
     fields = (('title', 'topic'),'body','ctime','visiting','parent','prev_post','level')  # 指定文章发布选项
 

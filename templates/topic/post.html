@@ -93,7 +93,7 @@
 
 
 
-                <p>阅读:&nbsp;{{ post.visiting }}
+                <p>{{ post.ctime }}&nbsp&sdot; 阅读:&nbsp;{{ post.visiting }}
                     {% if user_login %}
                         <a href="/admin/topic/post/{{ post.pk }}/change/" class="glyphicon glyphicon-wrench"></a>
                     {% endif %}

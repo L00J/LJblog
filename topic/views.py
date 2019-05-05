@@ -33,14 +33,14 @@ def topic(request, pk):
     topic_index = Topic.objects.filter(post__pk=pk)
     topic_pk = [i for i in topic_index][0]
 
-    post_all = Post.objects.filter(topic=topic_pk).order_by('ctime','parent')
+    post_all = Post.objects.filter(topic=topic_pk).order_by('ctime','parent','level')
 
     md = markdown.Markdown(extensions=[
         'markdown.extensions.extra',
         'markdown.extensions.codehilite',
         'markdown.extensions.toc',
     ])
-    post.body = md.convert(post.body.replace("\r\n", '  \n'))
+    post.body = md.convert(post.body.replace("\r\n", '\n'))
     toc = md.toc
 
 

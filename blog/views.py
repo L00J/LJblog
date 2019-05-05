@@ -18,7 +18,8 @@ from django.views import View
 
 
 
-from datetime import date
+
+
 from haystack.generic_views import SearchView
 class MySearchView(SearchView):
     """My custom search view."""
@@ -29,11 +30,20 @@ class MySearchView(SearchView):
     #     return queryset.filter(pub_date__gte=date(2015, 1, 1))
 
     def get_context_data(self, *args, **kwargs):
+
         context = super(MySearchView, self).get_context_data(*args, **kwargs)
 
         tag_all = [tag for tag in Tag.objects.all()]
 
         # do something
+
+        topic_indexes = {}
+        topic_all = Topic.objects.all()  # 专题
+        for t in topic_all:
+            k = [i.pk for i in Post.objects.filter(topic=t.pk)[:1]]
+            if len(k) > 0:
+                topic_indexes[k[0]] = t.name
+
 
         context = locals()
         return context
@@ -60,10 +70,24 @@ def search(request):
     if request.user.is_authenticated:
         user_login = True
 
+
+
+    topic_indexes = {}
+    topic_all = Topic.objects.all()  # 专题
+    for t in topic_all:
+        k = [i.pk for i in Post.objects.filter(topic=t.pk)[:1]]
+        if len(k) > 0:
+            topic_indexes[k[0]] = t.name
+
+
+
+
     key = request.GET.get('key')
     error_msg = ''
 
     tag_all = [tag for tag in Tag.objects.all()]
+
+
 
     if not key:
         error_msg = "请输入关键词"
@@ -185,7 +209,7 @@ def detail(request, pk):
         'markdown.extensions.codehilite',
         'markdown.extensions.toc',
     ])
-    article.body = md.convert(article.body.replace("\r\n", '  \n'))
+    article.body = md.convert(article.body.replace("\r\n", '\n'))
     toc = md.toc
 
 
@@ -212,14 +236,7 @@ def detail(request, pk):
     context = locals()
     return render(request, 'blog/detail.html', context)
 
-    # context = {'article':article}
-    # return  render(request,'detail.html',context)
 
-    # article.content = markdown.markdown(article.content.replace("\r\n", '  \n'),extensions=[
-    #                                  'markdown.extensions.extra',
-    #                                  'markdown.extensions.codehilite',
-    #                                  'markdown.extensions.toc',
-    #                               ],safe_mode=True,enable_attributes=False)
 
 
 def articles(request, pk):
