@@ -13,7 +13,7 @@ app_name = 'topic'
 
 urlpatterns = [
 
-    re_path('(?P<pk>\d+)/$', views.topic, name='part'),
+    re_path('(?P<pk>\d+).html$', views.topic, name='part'),
 
     # path('', views.index, name="index"),
     # path('topic', views.IndexView.as_view(), name="index"),

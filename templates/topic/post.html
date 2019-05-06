@@ -10,22 +10,21 @@
         <div class="col-md-3">
 
 
-
             <div class="list-group">
-              {% for i  in topic_index %}
+                {% for i  in topic_index %}
                     {{ i.name }}目录
                 {% endfor %}
 
                 <hr/>
 
 
-
+{#                <div class="list-group-item" >#}
 
                 {% for p in post_all %}
 
                     <!-- 分层和高亮 -->
                     {% if  p.level == 0 %}
-                        <a  href="{% url "topic:part" p.pk %}"
+                        <a href="{% url "topic:part" p.pk %}"
                                 {% if p.pk == post.pk %}
                            class="list-group-item active">
                                 {% else %}
@@ -43,7 +42,7 @@
                                 {% else %}
                                     class="list-group-item">
                                 {% endif %}
-                        <strong>{{ p.title }}</strong>
+                        {{ p.title }}
                         </a>
 
 
@@ -55,61 +54,51 @@
                                 {% else %}
                                     class="list-group-item">
                                 {% endif %}
-                        <strong>{{ p.title }}</strong>
+                        {{ p.title }}
                         </a>
                     {% endif %}
 
 
                 {% endfor %}
 
-
             </div>
 
+{#        </div>#}
 
 
+        <h4>&nbsp&nbsp&nbsp扫码加入运维圈</h4>
+        <img src="/media/home_page/qq.png" style="width:60%">
+        <br/>
+        <br/>
+    </div>
 
 
+    <!-- 左侧目录栏 结束 -->
 
+    <!-- 右侧正文栏 -->
+    <div class="col-md-9">
+        <!-- 教程正文主体部分 -->
+        <div class="row">
 
-
-
-
-            <h4>&nbsp&nbsp&nbsp扫码加入运维圈</h4>
-            <img src="/media/home_page/qq.png" style="width:60%">
+            <h1>{{ post.title }}</h1>
             <br/>
-            <br/>
+
+
+            <p>{{ post.ctime }}&nbsp&sdot; 阅读:&nbsp;{{ post.visiting }}
+                {% if user_login %}
+                    <a href="/admin/topic/post/{{ post.pk }}/change/" class="glyphicon glyphicon-wrench"></a>
+                {% endif %}
+            <hr/>
+            </p>
+
+
+            {{ post.body|safe }}
+
+
+            <hr/>
         </div>
-
-
-        <!-- 左侧目录栏 结束 -->
-
-        <!-- 右侧正文栏 -->
-        <div class="col-md-9">
-            <!-- 教程正文主体部分 -->
-            <div class="row">
-
-                    <h1>{{ post.title}}</h1>
-            <br/>
-
-
-
-                <p>{{ post.ctime }}&nbsp&sdot; 阅读:&nbsp;{{ post.visiting }}
-                    {% if user_login %}
-                        <a href="/admin/topic/post/{{ post.pk }}/change/" class="glyphicon glyphicon-wrench"></a>
-                    {% endif %}
-                <hr/>
-                </p>
-
-
-
-
-                {{ post.body|safe }}
-
-
-                <hr/>
-            </div>
-            <!-- 教程正文主体部分结束 -->
-        </div>
+        <!-- 教程正文主体部分结束 -->
+    </div>
     </div>
 
 
