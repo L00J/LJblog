@@ -205,3 +205,5 @@ LOGGING = {
 # }
 # https://segmentfault.com/a/1190000013671248
 
+LOGIN_URL = '/admin'
+LOGIN_REDIRECT_URL= '/topic/'

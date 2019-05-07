@@ -8,6 +8,11 @@ import markdown
 from django.utils.safestring import mark_safe
 
 
+
+from django.contrib.auth.decorators import login_required
+
+
+@login_required
 def topic(request, pk):
 
     if request.user.is_authenticated:
