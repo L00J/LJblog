@@ -7,7 +7,7 @@
 ![bootstrap](https://img.shields.io/badge/bootstrap-3.3.7-brightgreen.svg?style=plastic)
 ![markdown](https://img.shields.io/badge/markdown-3.0.1-brightgreen.svg?style=plastic)
 ![django-mdeditor](https://img.shields.io/badge/mdeditor-0.1.13-brightgreen.svg?style=plastic)
-![django-simpleui](https://img.shields.io/badge/simpleui-2.0.6-brightgreen.svg?style=plastic)
+![django-simpleui](https://img.shields.io/badge/simpleui-2.1.7-brightgreen.svg?style=plastic)
 
 
 
