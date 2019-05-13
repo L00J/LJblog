@@ -97,6 +97,10 @@ python manage.py loaddata  dump_.json
 
 首页:
 ![首页](doc/index.jpg)
+专题
+![专题](doc/topic1.jpg)
+
+
 
 文章发布图：
 ![后台](doc/article1.jpg)
