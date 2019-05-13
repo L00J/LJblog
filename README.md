@@ -50,11 +50,16 @@ DATABASES = {
 ### 初始化数据并并启动
 ```
 python manage.py makemigrations 
-#为改动models创建迁移记录
+# 为改动models创建迁移记录
 python manage.py migrate 
-#同步数据库
+# 同步数据库
 python manage.py  createsuperuser
-#建立后台管理员帐号
+# 建立后台管理员帐号
+
+python manage.py collectstatic
+# 收集静态资源
+python manage.py rebuild_index
+# 创建博客index索引
 
 python manage.py runserver
 #启动服务
