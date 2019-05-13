@@ -2,6 +2,7 @@ Django==2.1.5
 django-appconf==1.0.2
 django-haystack==2.8.1
 django-mdeditor==0.1.13
+django-simpleui==2.0.6
 future==0.17.1
 jieba==0.39
 Markdown==3.0.1

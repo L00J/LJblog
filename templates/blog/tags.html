@@ -9,7 +9,8 @@
                     <div class="uk-accordion-content">
                         <ul>
                             {% for post in tag.article_set.all %}
-                                <li><a href="{{ post.get_absolute_url }}" class="uk-link-reset uk-button-text">{{ post.title }}</a></li>
+                                <li><a href="{{ post.get_absolute_url }}"
+                                       class="uk-link-reset uk-button-text">{{ post.title }}</a></li>
                             {% endfor %}
                         </ul>
                     </div>
