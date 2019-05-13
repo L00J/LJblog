@@ -210,3 +210,6 @@ LOGGING = {
 
 # LOGIN_URL = '/admin'
 # LOGIN_REDIRECT_URL= '/topic/'
+
+# 隐藏simpleui服务器信息
+SIMPLEUI_HOME_INFO = False
